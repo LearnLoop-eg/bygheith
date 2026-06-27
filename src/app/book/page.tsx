@@ -6,9 +6,8 @@ import { Section, Eyebrow } from "@/components/Section";
 import { packages } from "@/lib/content";
 
 // Set your real WhatsApp number (international format, no + or spaces)
-const WHATSAPP_NUMBER = "201000000000";
-// Set your Formspree (or other) endpoint for the email route
-const FORM_ENDPOINT = "https://formspree.io/f/your-id";
+const WHATSAPP_NUMBER = "201124444204";
+const FORM_ENDPOINT = "https://formspree.io/f/xeebkabg";
 
 function BookForm() {
   const params = useSearchParams();

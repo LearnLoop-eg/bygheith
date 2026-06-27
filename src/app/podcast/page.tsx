@@ -39,9 +39,8 @@ export default function PodcastPage() {
             live. No spam — just the show.
           </p>
 
-          {/* Replace action with your form endpoint (Formspree / Resend) */}
           <form
-            action="https://formspree.io/f/your-id"
+            action="https://formspree.io/f/xeebkabg"
             method="POST"
             className="mx-auto mt-6 flex max-w-sm flex-col gap-3 sm:flex-row"
           >
