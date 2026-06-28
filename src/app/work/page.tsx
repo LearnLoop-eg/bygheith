@@ -31,32 +31,30 @@ export default function WorkPage() {
         {caseStudies.map((c, i) => (
           <div
             key={c.slug}
-            className="grid gap-8 rounded-xl border border-[var(--bone-line)] bg-white p-8 md:grid-cols-[1.4fr_1fr]"
+            className="rounded-xl border border-[var(--bone-line)] bg-white p-8"
           >
-            <div>
-              <span className="text-xs tracking-[0.14em] text-[var(--muted-soft)]">
-                {String(i + 1).padStart(2, "0")} · {c.tag.toUpperCase()}
-              </span>
-              <h2 className="font-display mt-2 text-2xl font-medium text-[var(--pine)]">
-                {c.title}
-              </h2>
-              <p className="mt-3 text-sm leading-relaxed text-[var(--muted)]">
-                {c.summary}
-              </p>
-              <p className="mt-3 text-sm leading-relaxed text-[var(--ink)]">
-                {c.detail}
-              </p>
-            </div>
-            <div className="grid grid-cols-3 gap-3 md:grid-cols-1">
+            <span className="text-xs tracking-[0.14em] text-[var(--muted-soft)]">
+              {String(i + 1).padStart(2, "0")} · {c.tag.toUpperCase()}
+            </span>
+            <h2 className="font-display mt-2 text-2xl font-medium text-[var(--pine)]">
+              {c.title}
+            </h2>
+            <p className="mt-3 text-sm leading-relaxed text-[var(--muted)]">
+              {c.summary}
+            </p>
+            <p className="mt-3 text-sm leading-relaxed text-[var(--ink)]">
+              {c.detail}
+            </p>
+            <div className="mt-6 grid grid-cols-1 gap-3 md:grid-cols-3">
               {c.metrics.map((m) => (
                 <div
                   key={m.label}
-                  className="min-w-0 rounded-lg bg-[var(--bone)] p-4"
+                  className="flex items-center gap-4 rounded-lg bg-[var(--bone)] px-5 py-4 md:block"
                 >
-                  <p className="font-display break-words hyphens-auto text-xl font-medium text-[var(--pine)] md:text-2xl">
+                  <p className="font-display text-2xl font-medium text-[var(--pine)]">
                     {m.value}
                   </p>
-                  <p className="mt-1 text-xs text-[var(--muted-soft)]">
+                  <p className="text-xs text-[var(--muted-soft)] md:mt-1">
                     {m.label}
                   </p>
                 </div>

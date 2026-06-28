@@ -46,7 +46,7 @@ export const caseStudies = [
       "Brand identity, collection naming, product storytelling, Instagram grid strategy, and a creative system — including a Reels production workflow — that gave a new brand a premium, consistent voice from day one.",
     metrics: [
       { label: "Scope", value: "End-to-end" },
-      { label: "Output", value: "Identity + content" },
+      { label: "Output", value: "Identity" },
       { label: "Market", value: "MENA" },
     ],
   },
