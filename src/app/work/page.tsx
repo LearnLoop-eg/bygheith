@@ -51,9 +51,9 @@ export default function WorkPage() {
               {c.metrics.map((m) => (
                 <div
                   key={m.label}
-                  className="rounded-lg bg-[var(--bone)] p-4"
+                  className="min-w-0 rounded-lg bg-[var(--bone)] p-4"
                 >
-                  <p className="font-display text-2xl font-medium text-[var(--pine)]">
+                  <p className="font-display break-words hyphens-auto text-xl font-medium text-[var(--pine)] md:text-2xl">
                     {m.value}
                   </p>
                   <p className="mt-1 text-xs text-[var(--muted-soft)]">
