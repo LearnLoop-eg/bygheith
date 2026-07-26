@@ -17,8 +17,8 @@ export default function Footer() {
           <div>
             <p className="font-display text-2xl font-medium">By Gheith</p>
             <p className="mt-2 max-w-sm text-sm text-[var(--sage)]">
-              Marketing and ecommerce expert across MENA. Strategy, Shopify,
-              and performance — played like golf.
+              Founder & operator across MENA. Building LearnLoop and Beyond
+              Reason — played like golf.
             </p>
           </div>
           <div className="flex flex-col gap-2 text-sm md:items-end">
@@ -37,7 +37,7 @@ export default function Footer() {
               href="/book"
               className="text-[var(--sage)] transition-colors hover:text-[var(--bone)]"
             >
-              Book a call
+              Get in touch
             </Link>
           </div>
         </div>

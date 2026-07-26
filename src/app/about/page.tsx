@@ -7,7 +7,7 @@ import { credentials } from "@/lib/content";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Ahmed Gheith — marketing and ecommerce expert. A decade across the agency, media and brand sides in MENA.",
+    "Gheith — founder and operator. Founder & CEO of LearnLoop, partner at Beyond Reason, and a decade across brand, ecommerce and performance in MENA.",
 };
 
 export default function AboutPage() {
@@ -19,8 +19,7 @@ export default function AboutPage() {
             <span className="text-[var(--brass-soft)]">About</span>
           </Eyebrow>
           <h1 className="font-display mt-3 max-w-3xl text-4xl font-medium leading-tight md:text-5xl">
-            I help businesses find the one clear strategy that changes
-            everything.
+            I build things, and I play the long game.
           </h1>
         </Section>
       </div>
@@ -28,23 +27,33 @@ export default function AboutPage() {
       <Section className="grid gap-12 py-16 md:grid-cols-[1.5fr_1fr]">
         <div className="space-y-4 text-[15px] leading-relaxed text-[var(--ink)]">
           <p>
-            Hi, I&apos;m Gheith. I&apos;ve spent over a decade building brands,
-            crafting digital strategies, and leading creative work across some
-            of the region&apos;s most recognized names — from Forbes Middle
-            East to Cassbana, Digitology, and beyond.
+            I&apos;m Gheith — a founder and operator who&apos;s spent over a
+            decade in the trenches of marketing, brand and ecommerce across the
+            MENA region.
           </p>
           <p>
-            I co-founded The Creative Zone, and today I&apos;m a partner at
-            Beyond Reason, where I built the digital strategy, online store,
-            and creative direction from scratch. I&apos;m also Senior Digital
-            Marketing Manager at Mountain View.
+            I started on the agency and media side — social lead at Forbes
+            Middle East, account direction at Digitology, senior roles at
+            Cassbana and Mountain View. I learned how brands actually grow, and
+            where most of them get stuck.
           </p>
           <p>
-            I&apos;ve sat on the agency side, the media side, and the brand
-            side — which means I understand the full picture, not just one
-            piece of it. I consult because most businesses are one clear
-            strategy away from a very different result. I just help them find
-            it.
+            Then I stopped just advising and started building. Today I&apos;m
+            the founder and CEO of LearnLoop, a peer-to-peer skill-exchange
+            platform for Egypt and MENA — a place where people teach what they
+            know and learn what they love, no money required. And I&apos;m a
+            partner at Beyond Reason, where I built the digital strategy, online
+            store and creative direction from the ground up.
+          </p>
+          <p>
+            Marketing is still the craft underneath everything I do — but now I
+            point it at the things I own and build, not just projects for hire.
+          </p>
+          <p>
+            Away from the screen, I play golf. It&apos;s become the clearest
+            metaphor I have for how I work: precision over power, composure
+            under pressure, and the patience to play the long game. On the
+            course and in business, I&apos;m playing the same game.
           </p>
           <p className="font-display text-lg italic text-[var(--pine)]">
             Marketing, to me, is a long game — and I play to win it.
@@ -88,13 +97,13 @@ export default function AboutPage() {
       <div className="bg-[var(--pine)] text-[var(--bone)]">
         <Section className="py-16 text-center">
           <h2 className="font-display text-2xl font-medium md:text-3xl">
-            Let&apos;s talk about your brand.
+            Building something? Let&apos;s talk shop.
           </h2>
           <Link
             href="/book"
             className="mt-6 inline-block rounded-md bg-[var(--brass)] px-7 py-3 text-sm font-medium text-[var(--pine)] transition-opacity hover:opacity-90"
           >
-            Book a free call
+            Get in touch
           </Link>
         </Section>
       </div>

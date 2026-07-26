@@ -4,10 +4,10 @@ import Link from "next/link";
 import { useState } from "react";
 
 const links = [
-  { href: "/work", label: "Work" },
+  { href: "/ventures", label: "Ventures" },
   { href: "/about", label: "About" },
-  { href: "/golf", label: "Golf" },
   { href: "/podcast", label: "Podcast" },
+  { href: "/golf", label: "Golf" },
 ];
 
 export default function Nav() {
@@ -38,7 +38,7 @@ export default function Nav() {
             href="/book"
             className="rounded-md bg-[var(--brass)] px-4 py-2 text-sm font-medium text-[var(--pine)] transition-opacity hover:opacity-90"
           >
-            Book a call
+            Get in touch
           </Link>
         </div>
 
@@ -70,7 +70,7 @@ export default function Nav() {
             className="mt-2 inline-block rounded-md bg-[var(--brass)] px-4 py-2 text-sm font-medium text-[var(--pine)]"
             onClick={() => setOpen(false)}
           >
-            Book a call
+            Get in touch
           </Link>
         </div>
       )}

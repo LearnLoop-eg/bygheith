@@ -67,13 +67,13 @@ export default function WorkPage() {
       <div className="bg-[var(--pine)] text-[var(--bone)]">
         <Section className="py-16 text-center">
           <h2 className="font-display text-2xl font-medium md:text-3xl">
-            Want results like these for your brand?
+            Building something? Let&apos;s talk shop.
           </h2>
           <Link
             href="/book"
             className="mt-6 inline-block rounded-md bg-[var(--brass)] px-7 py-3 text-sm font-medium text-[var(--pine)] transition-opacity hover:opacity-90"
           >
-            Book a free call
+            Get in touch
           </Link>
         </Section>
       </div>

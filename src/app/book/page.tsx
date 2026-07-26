@@ -1,37 +1,32 @@
 "use client";
 
-import { useState, Suspense } from "react";
-import { useSearchParams } from "next/navigation";
+import { useState } from "react";
 import { Section, Eyebrow } from "@/components/Section";
-import { packages } from "@/lib/content";
 
 // Set your real WhatsApp number (international format, no + or spaces)
 const WHATSAPP_NUMBER = "201124444204";
 const FORM_ENDPOINT = "https://formspree.io/f/xeebkabg";
 
 function BookForm() {
-  const params = useSearchParams();
-  const preset = params.get("package") ?? "";
-
   const [form, setForm] = useState({
     name: "",
     email: "",
     company: "",
-    pkg: preset,
+    topic: "",
     message: "",
   });
 
   const update =
     (k: keyof typeof form) =>
-    (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) =>
+    (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
       setForm((f) => ({ ...f, [k]: e.target.value }));
 
   const whatsappHref = () => {
     const text = [
-      `Hi Gheith, I'd like to book a free 15-min call.`,
+      `Hi Gheith, I'd like to get in touch.`,
       `Name: ${form.name || "—"}`,
       form.company ? `Company: ${form.company}` : "",
-      form.pkg ? `Interested in: ${form.pkg}` : "",
+      form.topic ? `About: ${form.topic}` : "",
       form.message ? `Note: ${form.message}` : "",
     ]
       .filter(Boolean)
@@ -77,32 +72,26 @@ function BookForm() {
         </div>
         <div>
           <label className="text-sm font-medium text-[var(--ink)]">
-            Interested in
+            What&apos;s this about?
           </label>
-          <select
+          <input
             className={`mt-1 ${input}`}
-            value={form.pkg}
-            onChange={update("pkg")}
-          >
-            <option value="">Not sure yet</option>
-            {packages.map((p) => (
-              <option key={p.name} value={p.name}>
-                {p.name}
-              </option>
-            ))}
-          </select>
+            value={form.topic}
+            onChange={update("topic")}
+            placeholder="Advising, a venture, the podcast…"
+          />
         </div>
       </div>
       <div className="mt-4">
         <label className="text-sm font-medium text-[var(--ink)]">
-          What do you want to solve?
+          Tell me what you&apos;re working on
         </label>
         <textarea
           rows={4}
           className={`mt-1 ${input} resize-none`}
           value={form.message}
           onChange={update("message")}
-          placeholder="A sentence or two about your challenge."
+          placeholder="A sentence or two about what you're building."
         />
       </div>
 
@@ -119,7 +108,7 @@ function BookForm() {
           <input type="hidden" name="name" value={form.name} />
           <input type="hidden" name="email" value={form.email} />
           <input type="hidden" name="company" value={form.company} />
-          <input type="hidden" name="package" value={form.pkg} />
+          <input type="hidden" name="topic" value={form.topic} />
           <input type="hidden" name="message" value={form.message} />
           <button
             type="submit"
@@ -130,8 +119,8 @@ function BookForm() {
         </form>
       </div>
       <p className="mt-4 text-xs text-[var(--muted-soft)]">
-        I reply personally, usually within a day. The first 15-minute call is
-        free — we align on scope, then settle details and payment together.
+        I reply personally, usually within a day. No account managers — just a
+        direct line to me.
       </p>
     </div>
   );
@@ -143,23 +132,21 @@ export default function BookPage() {
       <div className="bg-[var(--pine)] text-[var(--bone)]">
         <Section className="py-20">
           <Eyebrow>
-            <span className="text-[var(--brass-soft)]">Book</span>
+            <span className="text-[var(--brass-soft)]">Get in touch</span>
           </Eyebrow>
           <h1 className="font-display mt-3 max-w-2xl text-4xl font-medium leading-tight md:text-5xl">
-            Let&apos;s start with a free 15-minute call.
+            Get in touch
           </h1>
           <p className="mt-4 max-w-xl text-sm leading-relaxed text-[var(--sage)]">
-            Tell me a little about what you&apos;re working on. We&apos;ll see
-            if it&apos;s a fit, and take it from there — no pressure, no
-            account managers.
+            I take on a small number of advisory engagements, and I&apos;m
+            always happy to talk to founders and marketers building something.
+            Tell me what you&apos;re working on.
           </p>
         </Section>
       </div>
 
       <Section className="py-16">
-        <Suspense fallback={<div className="text-sm">Loading…</div>}>
-          <BookForm />
-        </Suspense>
+        <BookForm />
       </Section>
     </main>
   );

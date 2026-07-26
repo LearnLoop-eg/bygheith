@@ -7,6 +7,39 @@ export const trustedBy = [
   "The Creative Zone",
 ];
 
+export const ventures = [
+  {
+    slug: "learnloop",
+    name: "LearnLoop",
+    role: "Founder & CEO",
+    href: "https://joinlearnloop.com",
+    linkLabel: "Visit LearnLoop",
+    external: true,
+    description:
+      "A peer-to-peer skill-exchange platform for Egypt & MENA. People teach what they know and learn what they love — no money, just credits. Teach a session to earn a credit, spend a credit to learn anything, from Arabic to Python to Shopify. 94 skills across 11 categories.",
+    metrics: [
+      { label: "Skills", value: "94" },
+      { label: "Categories", value: "11" },
+      { label: "Role", value: "Founder & CEO" },
+    ],
+  },
+  {
+    slug: "beyond-reason",
+    name: "Beyond Reason",
+    role: "Partner",
+    href: "/work",
+    linkLabel: "See the full build",
+    external: false,
+    description:
+      "A premium golf, tennis and padel apparel brand. I built the digital engine from scratch — a Shopify store, a 457-SKU catalog, a Meta ads performance engine, payments, Instagram Shopping and a delivery network mapped across Egypt. The full digital build, end to end.",
+    metrics: [
+      { label: "SKUs structured", value: "457" },
+      { label: "Units catalogued", value: "1,553" },
+      { label: "Role", value: "Partner" },
+    ],
+  },
+];
+
 export const caseStudies = [
   {
     slug: "beyond-reason",
@@ -49,43 +82,6 @@ export const caseStudies = [
       { label: "Output", value: "Identity" },
       { label: "Market", value: "MENA" },
     ],
-  },
-];
-
-export const packages = [
-  {
-    name: "Strategy session",
-    duration: "60 minutes",
-    blurb: "One focused problem. A clear, prioritized action plan you can run.",
-    points: [
-      "Pre-call brief so we use every minute",
-      "Live working session on your challenge",
-      "Written action plan after the call",
-    ],
-    featured: false,
-  },
-  {
-    name: "Monthly retainer",
-    duration: "Ongoing partnership",
-    blurb:
-      "A hands-on marketing and ecommerce partner embedded in your brand.",
-    points: [
-      "Strategy, performance media and ecommerce",
-      "Weekly priorities and reporting",
-      "Direct line — not a layer of account managers",
-    ],
-    featured: true,
-  },
-  {
-    name: "Shopify build",
-    duration: "Fixed-scope project",
-    blurb: "A done-for-you store, launch-ready in weeks, built to convert.",
-    points: [
-      "Store design, catalog and checkout",
-      "Payments, shipping and pixel setup",
-      "Launch playbook handed over",
-    ],
-    featured: false,
   },
 ];
 

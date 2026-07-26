@@ -20,15 +20,15 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.bygheith.com"),
   title: {
-    default: "By Gheith — Marketing & ecommerce expert",
+    default: "Gheith — Founder & Operator",
     template: "%s — By Gheith",
   },
   description:
-    "Ahmed Gheith — marketing and ecommerce expert across MENA. Brand strategy, Shopify builds, and performance marketing. Play the long game.",
+    "Gheith — founder & operator. Founder & CEO of LearnLoop, partner at Beyond Reason, and a decade across brand, ecommerce and performance in MENA. Play the long game.",
   openGraph: {
-    title: "By Gheith — Marketing & ecommerce expert",
+    title: "Gheith — Founder & Operator",
     description:
-      "Marketing and ecommerce expert across MENA. Strategy, Shopify, and performance — played like golf.",
+      "Founder & operator building ventures across MENA. LearnLoop, Beyond Reason, and a decade of marketing — played like golf.",
     url: "https://www.bygheith.com",
     siteName: "By Gheith",
     type: "website",
