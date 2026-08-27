@@ -7,56 +7,70 @@ export default function Home() {
   return (
     <main>
       {/* Hero */}
-      <div className="bg-[var(--pine)] text-[var(--bone)]">
-        <Section className="py-20 md:py-28">
-          <div className="grid items-center gap-12 md:grid-cols-2">
-            {/* Text */}
-            <div>
-              <p className="eyebrow text-[var(--brass-soft)]">
-                Founder &amp; Operator · Golfer
-              </p>
-              <h1 className="font-display mt-3 text-4xl font-medium leading-tight text-[var(--bone)] md:text-6xl">
-                Gheith
-                <br />
-                <span className="italic text-[var(--brass-soft)]">
-                  Founder &amp; Operator
-                </span>
-              </h1>
-              <p className="mt-6 text-base leading-relaxed text-[var(--sage)]">
-                I build and run ventures — founder &amp; CEO of LearnLoop,
-                partner at Beyond Reason, and the marketing mind behind both. A
-                decade across brand, ecommerce and performance in MENA, applied
-                to the things I build. And on the course, I play the long game.
-              </p>
-              <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-                <Link
-                  href="/book"
-                  className="rounded-md bg-[var(--brass)] px-7 py-3 text-center text-sm font-medium text-[var(--pine)] transition-opacity hover:opacity-90"
-                >
-                  Get in touch
-                </Link>
-                <Link
-                  href="/ventures"
-                  className="rounded-md border border-white/25 px-7 py-3 text-center text-sm font-medium text-[var(--bone)] transition-colors hover:border-white/50"
-                >
-                  See what I&apos;m building
-                </Link>
-              </div>
-              <p className="mt-10 text-xs tracking-[0.3em] text-[var(--muted-soft)]">
-                PLAY THE LONG GAME
-              </p>
+      <div className="relative min-h-[70vh] w-full overflow-hidden bg-[var(--pine)] text-[var(--bone)] md:min-h-[80vh]">
+        {/* Background image */}
+        <Image
+          src="/images/hero-wide.jpg"
+          alt="Ahmed Gheith"
+          fill
+          sizes="100vw"
+          className="object-cover object-center"
+          priority
+        />
+        {/* Pine gradient overlay for legibility */}
+        <div
+          className="absolute inset-0"
+          aria-hidden
+          style={{
+            background:
+              "linear-gradient(90deg, rgba(18,42,36,0.92) 0%, rgba(18,42,36,0.78) 38%, rgba(18,42,36,0.35) 70%, rgba(18,42,36,0.12) 100%)",
+          }}
+        />
+        {/* Extra bottom-up wash so text never gets lost on mobile */}
+        <div
+          className="absolute inset-0 md:hidden"
+          aria-hidden
+          style={{
+            background:
+              "linear-gradient(0deg, rgba(18,42,36,0.9) 0%, rgba(18,42,36,0.45) 55%, rgba(18,42,36,0.2) 100%)",
+          }}
+        />
+        {/* Overlaid text */}
+        <Section className="relative flex min-h-[70vh] flex-col justify-center py-20 md:min-h-[80vh] md:py-28">
+          <div className="max-w-xl">
+            <p className="eyebrow text-[var(--brass-soft)]">
+              Founder &amp; Operator · Golfer
+            </p>
+            <h1 className="font-display mt-3 text-4xl font-medium leading-tight text-[var(--bone)] md:text-6xl">
+              Gheith
+              <br />
+              <span className="italic text-[var(--brass-soft)]">
+                Founder &amp; Operator
+              </span>
+            </h1>
+            <p className="mt-6 max-w-lg text-base leading-relaxed text-[var(--bone)]/90">
+              I build and run ventures — founder &amp; CEO of LearnLoop, partner
+              at Beyond Reason, and the marketing mind behind both. A decade
+              across brand, ecommerce and performance in MENA, applied to the
+              things I build. And on the course, I play the long game.
+            </p>
+            <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+              <Link
+                href="/book"
+                className="rounded-md bg-[var(--brass)] px-7 py-3 text-center text-sm font-medium text-[var(--pine)] transition-opacity hover:opacity-90"
+              >
+                Get in touch
+              </Link>
+              <Link
+                href="/ventures"
+                className="rounded-md border border-white/40 bg-white/5 px-7 py-3 text-center text-sm font-medium text-[var(--bone)] backdrop-blur-sm transition-colors hover:border-white/70"
+              >
+                See what I&apos;m building
+              </Link>
             </div>
-            {/* Photo */}
-            <div className="relative aspect-[4/5] w-full overflow-hidden rounded-xl">
-              <Image
-                src="/images/hero.jpg"
-                alt="Ahmed Gheith"
-                fill
-                sizes="(max-width: 768px) 100vw, 50vw"
-                className="object-cover"
-                priority
-              />
-            </div>
+            <p className="mt-10 text-xs tracking-[0.3em] text-[var(--bone)]/70">
+              PLAY THE LONG GAME
+            </p>
           </div>
         </Section>
       </div>
