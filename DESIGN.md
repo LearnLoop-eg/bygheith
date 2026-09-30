@@ -14,7 +14,7 @@ Cinematic personal-brand site on BR navy with chalk and orange chapters. Referen
 
 ## Motion (GSAP 3.15 + ScrollTrigger + SplitText, Lenis smooth scroll)
 - Preloader: 000-100 count, GHEITH wordmark, curtain lift. First visit per session only.
-- Hero: name left, portrait frame right (club-shoulder). Scroll pins; name slides away, frame grows to full-bleed, line lands over it.
+- Hero: edge-to-edge cinema band cycling landscape shoot frames (clip wipe + scale settle, progress line, pointer drift); roles + CTAs beneath; full name fitted to viewport width. Text never overlaps photos. Scroll pins and the band opens to full screen.
 - WordScrub manifesto, SplitReveal headings (lines rise from masks), ImageReveal (clip rise + scale settle + parallax), Counter.
 - One velocity-reactive marquee (career). Pinned horizontal shoot strip with inner drift. Long Game: pinned ball flight drawn along an SVG arc, lessons swap per third.
 - Magnetic buttons, fill-wipe hovers. All motion off under prefers-reduced-motion.
