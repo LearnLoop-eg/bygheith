@@ -30,19 +30,20 @@ A founder-operator who went from agency/media/brand-side marketing (Forbes Middl
 
 - Next.js 16 + TypeScript + Tailwind v4, deployed on Vercel from GitHub (LearnLoop-eg/bygheith).
 - URLs, nav labels and form field names/endpoints must stay stable.
-- Imagery: the owner's own photos only (currently 4 in /public/images); no generated imagery. More photos may be supplied later.
+- Imagery: the owner's own photos only; no generated imagery.
 
 ## Brand Commitments
 
-- Name "By Gheith" / @bygheith; line "Play the long game."
+- Handle @bygheith; line "Play the long game."
 - Golf is part of the identity and the metaphor for how he works.
-- Visual identity is open for replacement (user approved a new visual world, Oct 2026).
+- Name on site: "Ahmed Gheith". Brand: "ByGheith". English only, no Arabic text.
+- Wants a trendy, award-level, motion-heavy look (Oct 2026); rejected the "Sun & Shadow" terracotta direction as outdated.
 
 ## Evidence on Hand
 
 - Real facts: LearnLoop (94 skills, 11 categories, Founder & CEO); Beyond Reason (457 SKUs, 1,553 units, partner; Shopify, Paymob, valU, Instagram Shopping, Meta ads at 30k EGP/month).
 - Career history listed in src/lib/content.ts.
-- Photos: hero-wide.jpg (on course, phone call), golf.jpg (with club), gheith.jpg (seated, terracotta wall), hero.jpg (walking, palm avenue).
+- Photos: professional shoot in public/images/shoot/ (13 images: golf, calls, laptop, tablet); older photos in public/images/.
 - No testimonials, client logos files, press, or podcast episodes exist yet. Do not fabricate them.
 
 ## Product Principles

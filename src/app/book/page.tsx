@@ -2,8 +2,7 @@
 
 import { useState } from "react";
 import { WhatsappLogo, EnvelopeSimple } from "@phosphor-icons/react";
-import { Section } from "@/components/Section";
-import PageHero from "@/components/PageHero";
+import PageIntro from "@/components/PageIntro";
 
 // Set your real WhatsApp number (international format, no + or spaces)
 const WHATSAPP_NUMBER = "201124444204";
@@ -36,11 +35,11 @@ function BookForm() {
     return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
   };
 
-  const label = "block text-[0.95rem] font-semibold text-ink";
+  const label = "label block text-mute";
 
   return (
-    <div className="rounded-[6px] bg-white p-6 border border-lime-line sm:p-10">
-      <div className="grid gap-6 sm:grid-cols-2">
+    <div>
+      <div className="grid gap-x-10 gap-y-10 sm:grid-cols-2">
         <div>
           <label htmlFor="bk-name" className={label}>
             Name
@@ -70,7 +69,7 @@ function BookForm() {
         </div>
         <div>
           <label htmlFor="bk-company" className={label}>
-            Company <span className="font-normal text-ink-soft">(optional)</span>
+            Company <span className="normal-case tracking-normal">(optional)</span>
           </label>
           <input
             id="bk-company"
@@ -94,13 +93,13 @@ function BookForm() {
           />
         </div>
       </div>
-      <div className="mt-6">
+      <div className="mt-10">
         <label htmlFor="bk-message" className={label}>
           Tell me what you&apos;re working on
         </label>
         <textarea
           id="bk-message"
-          rows={5}
+          rows={4}
           className="field mt-2 resize-none"
           value={form.message}
           onChange={update("message")}
@@ -108,12 +107,12 @@ function BookForm() {
         />
       </div>
 
-      <div className="mt-8 grid gap-3 sm:grid-cols-2">
+      <div className="mt-12 grid gap-3 sm:grid-cols-2">
         <a
           href={whatsappHref()}
           target="_blank"
           rel="noopener noreferrer"
-          className="btn btn-primary w-full"
+          className="btn btn-signal w-full"
         >
           <WhatsappLogo size={20} weight="bold" aria-hidden />
           Send via WhatsApp
@@ -124,13 +123,13 @@ function BookForm() {
           <input type="hidden" name="company" value={form.company} />
           <input type="hidden" name="topic" value={form.topic} />
           <input type="hidden" name="message" value={form.message} />
-          <button type="submit" className="btn btn-ghost w-full text-ink">
+          <button type="submit" className="btn btn-line w-full text-chalk">
             <EnvelopeSimple size={20} weight="bold" aria-hidden />
             Send by email
           </button>
         </form>
       </div>
-      <p className="mt-5 text-sm text-ink-soft">
+      <p className="mt-6 text-sm text-mute">
         I reply personally, usually within a day. No account managers, just a
         direct line to me.
       </p>
@@ -141,17 +140,15 @@ function BookForm() {
 export default function BookPage() {
   return (
     <main>
-      <PageHero
-        title="Get in touch"
+      <PageIntro
+        title="Get in touch."
         intro="I take on a small number of advisory engagements, and I'm always happy to talk to founders and marketers building something. Tell me what you're working on."
       />
-      <div className="bg-lime">
-        <Section className="py-16 md:py-24">
-          <div className="mx-auto max-w-3xl">
-            <BookForm />
-          </div>
-        </Section>
-      </div>
+      <section className="px-5 pb-28 sm:px-8 md:pb-40">
+        <div className="max-w-4xl md:ml-[40%]">
+          <BookForm />
+        </div>
+      </section>
     </main>
   );
 }

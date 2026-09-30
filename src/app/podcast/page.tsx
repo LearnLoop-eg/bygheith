@@ -1,92 +1,59 @@
 import type { Metadata } from "next";
-import { Section, Pergola } from "@/components/Section";
-import PageHero from "@/components/PageHero";
-import Reveal from "@/components/Reveal";
+import PageIntro from "@/components/PageIntro";
+import { SplitReveal, Rise } from "@/components/motion/Reveal";
 
 export const metadata: Metadata = {
   title: "Podcast",
   description:
-    "ByGheith, a podcast on marketing, building, ecommerce and the founder's journey. Honest conversations and lessons from the long game.",
+    "ByGheith, a podcast by Ahmed Gheith on marketing, building, ecommerce and the founder's journey.",
 };
 
-const platforms = ["Spotify", "Apple Podcasts", "YouTube"];
-
 const seasons = [
-  {
-    theme: "Marketing",
-    blurb:
-      "How brands actually grow: positioning, performance and the craft underneath it all.",
-    tone: "bg-wall text-ink",
-    pergola: true,
-  },
-  {
-    theme: "Building",
-    blurb:
-      "The founder's journey: starting from zero, the messy middle, and staying in the game.",
-    tone: "bg-cobalt text-white",
-    pergola: false,
-  },
-  {
-    theme: "Ecommerce",
-    blurb:
-      "From first store to scale: catalogs, conversion, paid media and the numbers behind it.",
-    tone: "bg-dusk text-dusk-text",
-    pergola: false,
-  },
+  { theme: "Marketing", blurb: "How brands actually grow: positioning, performance and the craft underneath it all." },
+  { theme: "Building", blurb: "The founder's journey: starting from zero, the messy middle, and staying in the game." },
+  { theme: "Ecommerce", blurb: "From first store to scale: catalogs, conversion, paid media and the numbers behind it." },
 ];
 
 export default function PodcastPage() {
   return (
     <main>
-      <PageHero
+      <PageIntro
         title="ByGheith, the podcast."
-        intro="Each season digs into one theme, with honest conversations and lessons from the long game. No scattershot episodes: a run of episodes adds up to something you can actually use."
+        intro="Each season digs into one theme, with honest conversations and lessons from the long game. A run of episodes adds up to something you can actually use."
+        image="/images/shoot/call-sofa.jpg"
+        imageAlt="Ahmed Gheith on a call"
+        imagePos="50% 28%"
       />
 
-      <Section className="py-20 md:py-28">
-        <Reveal>
-          <h2 className="display text-4xl md:text-6xl">Seasons, one theme at a time.</h2>
-        </Reveal>
-        <div className="mt-12 grid gap-5 md:grid-cols-3">
+      <section className="px-5 py-20 sm:px-8 md:py-32">
+        <ol>
           {seasons.map((s, i) => (
-            <Reveal key={s.theme} delay={i * 70}>
-              <div
-                className={`arch relative flex aspect-[3/4] flex-col justify-end p-7 md:p-8 ${s.tone}`}
-              >
-                {s.pergola && <Pergola variant="soft" />}
-                <h3 className="display relative text-4xl lg:text-5xl">{s.theme}</h3>
-                <p className="relative mt-4 leading-relaxed opacity-90">
-                  Season {["one", "two", "three"][i]}. {s.blurb}
-                </p>
-              </div>
-            </Reveal>
+            <li key={s.theme}>
+              <Rise>
+                <div className="group grid gap-4 border-t border-line py-10 md:grid-cols-12 md:items-baseline md:py-14">
+                  <p className="display num text-signal md:col-span-2 md:text-5xl">S{i + 1}</p>
+                  <p className="display text-[16vw] transition-transform duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] md:col-span-6 md:text-[8vw] md:group-hover:translate-x-4">
+                    {s.theme}
+                  </p>
+                  <p className="text-lg text-mute md:col-span-4">{s.blurb}</p>
+                </div>
+              </Rise>
+            </li>
           ))}
-        </div>
-      </Section>
+        </ol>
+      </section>
 
-      <div className="relative overflow-hidden bg-wall text-ink">
-        <Pergola />
-        <Section className="relative grid gap-10 py-20 md:grid-cols-12 md:items-end md:py-28">
-          <Reveal className="md:col-span-6">
-            <h2 className="display text-5xl md:text-6xl">Be first to hear season one.</h2>
-            <p className="prose-body mt-6 text-lg leading-relaxed">
-              Drop your email and I&apos;ll let you know the moment it&apos;s
-              live. No spam, just the show.
-            </p>
-            <p className="mt-8 text-sm font-semibold">
-              Coming to {platforms.join(", ").replace(/, ([^,]*)$/, " and $1")}.
-            </p>
-          </Reveal>
-          <Reveal className="md:col-span-5 md:col-start-8" delay={80}>
-            <form
-              action="https://formspree.io/f/xeebkabg"
-              method="POST"
-              className="rounded-[6px] bg-white p-6 border border-lime-line md:p-8"
-            >
-              <label htmlFor="podcast-email" className="block font-semibold">
+      <section className="bg-chalk px-5 py-28 text-ink sm:px-8 md:py-40">
+        <div className="grid gap-12 md:grid-cols-12 md:items-end">
+          <SplitReveal as="h2" className="display text-[14vw] md:col-span-7 md:text-[7vw]">
+            Be first to hear season one.
+          </SplitReveal>
+          <Rise className="md:col-span-5">
+            <form action="https://formspree.io/f/xeebkabg" method="POST">
+              <label htmlFor="podcast-email" className="label text-ink/70">
                 Your email
               </label>
-              <div className="mt-3 flex flex-col gap-3 sm:flex-row">
+              <div className="mt-2 flex items-end gap-4">
                 <input
                   id="podcast-email"
                   type="email"
@@ -94,16 +61,19 @@ export default function PodcastPage() {
                   required
                   autoComplete="email"
                   placeholder="you@email.com"
-                  className="field flex-1"
+                  className="field flex-1 !border-ink/25 !text-ink placeholder:!text-ink/50 focus:!border-signal"
                 />
-                <button type="submit" className="btn btn-primary">
+                <button type="submit" className="btn btn-signal">
                   Notify me
                 </button>
               </div>
+              <p className="mt-4 text-sm text-ink/70">
+                Coming to Spotify, Apple Podcasts and YouTube. No spam.
+              </p>
             </form>
-          </Reveal>
-        </Section>
-      </div>
+          </Rise>
+        </div>
+      </section>
     </main>
   );
 }

@@ -3,50 +3,45 @@ import localFont from "next/font/local";
 import "./globals.css";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+import SmoothScroll from "@/components/motion/SmoothScroll";
+import Preloader from "@/components/motion/Preloader";
 
-// Self-hosted (OFL): Archivo variable with width axis, Alexandria Arabic for the name.
-const archivo = localFont({
-  src: [
-    {
-      path: "../fonts/archivo-wdth.woff2",
-      weight: "100 900",
-      style: "normal",
-    },
-  ],
-  variable: "--font-archivo",
+// Self-hosted, OFL licensed.
+const funnel = localFont({
+  src: "../fonts/funnel-display.woff2",
+  weight: "300 800",
+  variable: "--font-funnel",
   display: "swap",
-  declarations: [{ prop: "font-stretch", value: "62% 125%" }],
 });
-
-const alexandria = localFont({
-  src: "../fonts/alexandria-arabic-700.woff2",
-  weight: "700",
-  variable: "--font-alexandria",
+const geist = localFont({
+  src: "../fonts/geist.woff2",
+  weight: "100 900",
+  variable: "--font-geist",
   display: "swap",
-  preload: false,
 });
 
 export const viewport: Viewport = {
-  themeColor: "#cf7f68",
+  themeColor: "#0b0c0b",
 };
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.bygheith.com"),
   title: {
-    default: "Gheith | Founder & Operator",
-    template: "%s | By Gheith",
+    default: "Ahmed Gheith | ByGheith",
+    template: "%s | ByGheith",
   },
   description:
-    "Gheith, founder & operator. Founder & CEO of LearnLoop, partner at Beyond Reason, and a decade across brand, ecommerce and performance in MENA. Play the long game.",
+    "Ahmed Gheith, founder & operator. Founder & CEO of LearnLoop, partner at Beyond Reason, and a decade across brand, ecommerce and performance in MENA. Play the long game.",
   openGraph: {
-    title: "Gheith | Founder & Operator",
+    title: "Ahmed Gheith | ByGheith",
     description:
       "Founder & operator building ventures across MENA. LearnLoop, Beyond Reason, and a decade of marketing, played like golf.",
     url: "https://www.bygheith.com",
-    siteName: "By Gheith",
+    siteName: "ByGheith",
     type: "website",
+    images: [{ url: "/images/shoot/golf-cap.jpg", width: 1467, height: 2200 }],
   },
-  twitter: { card: "summary_large_image", title: "By Gheith" },
+  twitter: { card: "summary_large_image", title: "Ahmed Gheith | ByGheith" },
 };
 
 export default function RootLayout({
@@ -54,10 +49,13 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body className={`${archivo.variable} ${alexandria.variable}`}>
+      <body className={`${funnel.variable} ${geist.variable}`}>
+        <SmoothScroll />
+        <Preloader />
         <Nav />
         {children}
         <Footer />
+        <div aria-hidden className="grain" />
       </body>
     </html>
   );
