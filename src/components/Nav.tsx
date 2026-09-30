@@ -56,16 +56,16 @@ export default function Nav() {
         <nav className="mx-auto flex h-20 items-center justify-between px-5 sm:px-8">
           <Link
             href="/"
-            className="pointer-events-auto text-chalk mix-blend-difference"
+            className="pointer-events-auto flex h-11 items-center rounded-full bg-ink/75 px-5 text-chalk shadow-[0_8px_30px_-12px_rgb(0_0_0/0.4)] backdrop-blur-md"
             aria-label="ByGheith home"
           >
-            <span className="display text-2xl tracking-[-0.03em]">
+            <span className="display text-lg leading-none tracking-[-0.02em]">
               By<span className="text-signal">.</span>Gheith
             </span>
           </Link>
 
-          <div className="pointer-events-auto hidden items-center gap-9 md:flex">
-            <div className="flex items-center gap-8 text-chalk mix-blend-difference">
+          <div className="pointer-events-auto hidden items-center gap-2 md:flex">
+            <div className="flex h-11 items-center gap-7 rounded-full bg-ink/75 px-6 text-chalk shadow-[0_8px_30px_-12px_rgb(0_0_0/0.4)] backdrop-blur-md">
               {links.map((l) => {
                 const active = pathname?.startsWith(l.href);
                 return (
@@ -80,7 +80,7 @@ export default function Nav() {
                 );
               })}
             </div>
-            <Link href="/book" className="btn btn-signal !px-5 !py-2.5 !text-sm">
+            <Link href="/book" className="btn btn-signal !h-11 !px-5 !py-0 !text-sm">
               Get in touch
             </Link>
           </div>

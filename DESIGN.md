@@ -9,12 +9,12 @@ Cinematic personal-brand site on BR navy with chalk and orange chapters. Referen
 - `--signal #ff5a1f` spot colour (the orange tab on the BR collar/cap): primary actions, emphasis, the ball flight. Nothing else.
 
 ## Type
-- Funnel Display 300-800 (self-hosted, OFL): `.display` 700 / -0.045em / 0.88, `.display-light` 300. Sizes in vw, huge.
+- Mona Sans variable (self-hosted, OFL), width 112 weight 800 for `.display`, 400 for `.display-light`. Masks pad 0.18em so descenders never clip.
 - Geist 100-900 (self-hosted, OFL): body and UI. `.label` for small caps labels.
 
 ## Motion (GSAP 3.15 + ScrollTrigger + SplitText, Lenis smooth scroll)
 - Preloader: 000-100 count, GHEITH wordmark, curtain lift. First visit per session only.
-- Hero: name in difference blend over a portrait card; scroll pins, name splits apart, card opens full-bleed.
+- Hero: name left, portrait frame right (club-shoulder). Scroll pins; name slides away, frame grows to full-bleed, line lands over it.
 - WordScrub manifesto, SplitReveal headings (lines rise from masks), ImageReveal (clip rise + scale settle + parallax), Counter.
 - One velocity-reactive marquee (career). Pinned horizontal shoot strip with inner drift. Long Game: pinned ball flight drawn along an SVG arc, lessons swap per third.
 - Magnetic buttons, fill-wipe hovers. All motion off under prefers-reduced-motion.

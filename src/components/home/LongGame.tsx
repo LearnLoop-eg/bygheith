@@ -22,7 +22,7 @@ const lessons = [
 ];
 
 /** Scroll hits the shot: the ball flight draws across the screen, one lesson per third. */
-export default function LongGame() {
+export default function LongGame({ showLink = true }: { showLink?: boolean }) {
   const root = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -128,9 +128,11 @@ export default function LongGame() {
       <div className="relative z-10 flex h-full flex-col justify-between px-5 pb-12 pt-28 sm:px-8">
         <div className="flex items-start justify-between gap-6">
           <h2 className="display text-[14vw] md:text-[8vw]">The long game.</h2>
-          <Link href="/golf" className="btn btn-line mt-2 hidden text-chalk md:inline-flex">
-            Golf & me <ArrowRight size={18} weight="bold" aria-hidden />
-          </Link>
+          {showLink && (
+            <Link href="/golf" className="btn btn-line mt-2 hidden text-chalk md:inline-flex">
+              More on golf <ArrowRight size={18} weight="bold" aria-hidden />
+            </Link>
+          )}
         </div>
         <div className="relative min-h-[40vh] md:min-h-[30vh]">
           {lessons.map((l) => (

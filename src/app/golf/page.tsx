@@ -23,7 +23,7 @@ export default function GolfPage() {
         imagePos="50% 25%"
       />
 
-      <LongGame />
+      <LongGame showLink={false} />
 
       <section className="bg-chalk px-5 py-28 text-ink sm:px-8 md:py-40">
         <div className="grid gap-5 md:grid-cols-12">

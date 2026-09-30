@@ -7,11 +7,12 @@ import SmoothScroll from "@/components/motion/SmoothScroll";
 import Preloader from "@/components/motion/Preloader";
 
 // Self-hosted, OFL licensed.
-const funnel = localFont({
-  src: "../fonts/funnel-display.woff2",
-  weight: "300 800",
-  variable: "--font-funnel",
+const mona = localFont({
+  src: "../fonts/mona-sans.woff2",
+  weight: "200 900",
+  variable: "--font-mona",
   display: "swap",
+  declarations: [{ prop: "font-stretch", value: "75% 125%" }],
 });
 const geist = localFont({
   src: "../fonts/geist.woff2",
@@ -49,7 +50,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body className={`${funnel.variable} ${geist.variable}`}>
+      <body className={`${mona.variable} ${geist.variable}`}>
         <SmoothScroll />
         <Preloader />
         <Nav />

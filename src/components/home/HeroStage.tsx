@@ -8,8 +8,9 @@ import { gsap, SplitText, registerGsap, prefersReducedMotion } from "@/component
 import Magnetic from "@/components/motion/Magnetic";
 
 /**
- * The signature moment. The name frames a single portrait; scrolling pins the
- * stage, the name splits apart and the portrait opens to fill the screen.
+ * The signature moment. Name on the left, portrait framed on the right.
+ * Scrolling pins the stage: the name slides away and the portrait grows
+ * to fill the screen, then the line lands over it.
  */
 export default function HeroStage() {
   const root = useRef<HTMLElement>(null);
@@ -21,79 +22,75 @@ export default function HeroStage() {
     const reduce = prefersReducedMotion();
     const photo = el.querySelector<HTMLElement>(".hero-photo")!;
     const img = el.querySelector<HTMLElement>(".hero-photo img")!;
-    const first = el.querySelector<HTMLElement>(".hero-first")!;
-    const last = el.querySelector<HTMLElement>(".hero-last")!;
+    const name = el.querySelector<HTMLElement>(".hero-name")!;
+    const lines = el.querySelectorAll<HTMLElement>(".hero-line");
     const tail = el.querySelector<HTMLElement>(".hero-tail")!;
     const after = el.querySelector<HTMLElement>(".hero-after")!;
+    const shade = el.querySelector<HTMLElement>(".hero-shade")!;
 
     const mm = gsap.matchMedia();
-    let splitA: SplitText | null = null;
-    let splitB: SplitText | null = null;
-
-    // card geometry (desktop): centered portrait card inside a full-bleed layer
-    const card = () => {
-      const vw = window.innerWidth;
-      const vh = window.innerHeight;
-      const w = Math.min(vw * 0.24, vh * 0.5, 440);
-      const h = w * 1.34;
-      const top = (vh - h) / 2 + vh * 0.02;
-      const side = (vw - w) / 2;
-      return { "--t": `${top}px`, "--s": `${side}px`, "--b": `${vh - top - h}px`, "--rad": "20px" };
-    };
+    const splits: SplitText[] = [];
 
     const intro = () => {
       if (reduce) return;
-      splitA = SplitText.create(first, { type: "chars", mask: "chars" });
-      splitB = SplitText.create(last, { type: "chars", mask: "chars" });
-      const tl = gsap.timeline();
-      tl.from([...splitA.chars, ...splitB.chars], {
-        yPercent: 115,
-        duration: 1.2,
-        stagger: 0.035,
-        ease: "expo.out",
-      })
-        .from(img, { scale: 1.4, duration: 1.8, ease: "expo.out" }, 0.1)
-        .from(photo, { autoAlpha: 0, duration: 0.6, ease: "power2.out" }, 0.1)
+      const chars: Element[] = [];
+      lines.forEach((l) => {
+        const s = SplitText.create(l, { type: "chars", mask: "chars", charsClass: "char" });
+        splits.push(s);
+        chars.push(...s.chars);
+      });
+      gsap
+        .timeline()
+        .from(chars, { yPercent: 115, duration: 1.2, stagger: 0.035, ease: "expo.out" })
+        .fromTo(
+          photo,
+          { clipPath: "inset(100% 0% 0% 0%)" },
+          { clipPath: "inset(0% 0% 0% 0%)", duration: 1.4, ease: "expo.out", clearProps: "clipPath" },
+          0.15,
+        )
+        .from(img, { scale: 1.35, duration: 1.8, ease: "expo.out" }, 0.15)
         .from(tail.children, { y: 24, autoAlpha: 0, duration: 1, stagger: 0.08, ease: "expo.out" }, 0.5);
     };
 
+    // Desktop: the framed portrait grows into a full-bleed cover while pinned.
     mm.add("(min-width: 768px)", () => {
-      const apply = () => gsap.set(photo, card());
-      apply();
-      window.addEventListener("resize", apply);
       if (reduce) return;
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: el,
           start: "top top",
-          end: "+=140%",
+          end: "+=150%",
           pin: true,
           scrub: 0.8,
           invalidateOnRefresh: true,
         },
       });
-      tl.fromTo(
+      tl.to(
         photo,
-        { ...card(), immediateRender: false },
-        { "--t": "0px", "--s": "0px", "--b": "0px", "--rad": "0px", ease: "power2.inOut" },
+        {
+          top: 0,
+          right: 0,
+          bottom: 0,
+          width: () => window.innerWidth,
+          borderRadius: 0,
+          ease: "power2.inOut",
+        },
         0,
       )
-        .to(img, { scale: 1.08, ease: "none" }, 0)
-        .to(first, { xPercent: -60, autoAlpha: 0, ease: "power2.in" }, 0)
-        .to(last, { xPercent: 60, autoAlpha: 0, ease: "power2.in" }, 0)
-        .to(tail, { autoAlpha: 0, y: -40, ease: "power2.in", duration: 0.4 }, 0)
-        .fromTo(after, { autoAlpha: 0, y: 60 }, { autoAlpha: 1, y: 0, ease: "power3.out", duration: 0.45 }, 0.55);
-      return () => window.removeEventListener("resize", apply);
+        .to(name, { xPercent: -30, autoAlpha: 0, ease: "power2.in", duration: 0.6 }, 0)
+        .to(tail, { autoAlpha: 0, y: -30, ease: "power2.in", duration: 0.4 }, 0)
+        .fromTo(img, { objectPosition: "62% 22%" }, { objectPosition: "58% 6%", ease: "power2.inOut" }, 0)
+        .fromTo(shade, { opacity: 0 }, { opacity: 1, ease: "none", duration: 0.5 }, 0.3)
+        .fromTo(after, { autoAlpha: 0, y: 60 }, { autoAlpha: 1, y: 0, ease: "power3.out", duration: 0.4 }, 0.6);
     });
 
     mm.add("(max-width: 767px)", () => {
-      photo.style.clipPath = "none";
       if (reduce) return;
       gsap.fromTo(
         img,
-        { yPercent: -6 },
+        { yPercent: -5 },
         {
-          yPercent: 6,
+          yPercent: 5,
           ease: "none",
           scrollTrigger: { trigger: photo, start: "top bottom", end: "bottom top", scrub: true },
         },
@@ -103,9 +100,9 @@ export default function HeroStage() {
     let off: (() => void) | undefined;
     if (window.__bgIntroDone) intro();
     else {
-      gsap.set([first, last, photo, tail], { autoAlpha: 0 });
+      gsap.set([name, photo, tail], { autoAlpha: 0 });
       const go = () => {
-        gsap.set([first, last, photo, tail], { autoAlpha: 1 });
+        gsap.set([name, photo, tail], { autoAlpha: 1 });
         intro();
       };
       window.addEventListener("bg:intro", go, { once: true });
@@ -115,8 +112,7 @@ export default function HeroStage() {
     return () => {
       off?.();
       mm.revert();
-      splitA?.revert();
-      splitB?.revert();
+      splits.forEach((s) => s.revert());
     };
   }, []);
 
@@ -126,54 +122,58 @@ export default function HeroStage() {
       className="relative overflow-hidden bg-ink md:h-[100dvh]"
       aria-label="Ahmed Gheith"
     >
-      {/* Name */}
-      <h1 className="relative z-10 px-4 pt-24 sm:px-6 md:pointer-events-none md:absolute md:inset-x-0 md:top-0 md:z-20 md:pt-[10vh] md:text-chalk md:mix-blend-difference">
-        <span className="hero-first display block text-[25vw] md:text-[18.5vw]">Ahmed</span>
-        <span className="hero-last display -mt-[2vw] block text-right text-[25vw] md:mt-[14vh] md:text-[18.5vw]">
-          Gheith
-        </span>
-      </h1>
+      {/* Name + intro, left */}
+      <div className="relative z-10 flex flex-col px-4 pt-28 sm:px-6 md:absolute md:inset-y-0 md:left-0 md:w-[60vw] md:justify-center md:px-8 md:pt-16">
+        <h1 className="hero-name display text-[22vw] leading-[0.9] md:text-[11.5vw]">
+          <span className="hero-line block">Ahmed</span>
+          <span className="hero-line block">
+            Gheith<span className="text-signal">.</span>
+          </span>
+        </h1>
 
-      {/* Portrait: a card on desktop that opens to full-bleed */}
-      <div className="hero-photo relative z-10 mx-4 mt-6 aspect-[3/4] overflow-hidden rounded-[18px] sm:mx-6 md:absolute md:inset-0 md:z-10 md:m-0 md:aspect-auto md:rounded-none">
-        <Image
-          src="/images/shoot/golf-cap.jpg"
-          alt="Ahmed Gheith on the course, club in hand"
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover object-[50%_22%]"
-        />
-        <div
-          aria-hidden
-          className="absolute inset-0 hidden md:block"
-          style={{ background: "linear-gradient(to top, rgb(15 31 69 / 0.8), rgb(15 31 69 / 0.05) 45%, rgb(15 31 69 / 0) 70%, rgb(15 31 69 / 0.45))" }}
-        />
-      </div>
-
-      {/* Intro + actions */}
-      <div className="hero-tail relative z-20 flex flex-col gap-6 px-4 pb-14 pt-8 sm:px-6 md:absolute md:inset-x-0 md:bottom-0 md:flex-row md:items-end md:justify-between md:px-8 md:pb-10">
-        <p className="max-w-[34ch] text-lg leading-snug text-chalk md:text-xl">
-          Founder of LearnLoop. Partner at Beyond Reason. Leading marketing at
-          Core Livings, Mountain View.
-        </p>
-        <div className="flex flex-wrap gap-3">
-          <Magnetic>
-            <Link href="/book" className="btn btn-signal">
-              Get in touch <ArrowRight size={18} weight="bold" aria-hidden />
-            </Link>
-          </Magnetic>
-          <Magnetic>
-            <Link href="/ventures" className="btn btn-line text-chalk">
-              See what I&apos;m building
-            </Link>
-          </Magnetic>
+        <div className="hero-tail mt-8 flex flex-col gap-7 md:mt-12">
+          <p className="max-w-[36ch] text-lg leading-snug text-chalk/90 md:text-xl">
+            Founder of LearnLoop. Partner at Beyond Reason. Leading marketing at
+            Core Livings, Mountain View.
+          </p>
+          <div className="flex flex-wrap gap-3">
+            <Magnetic>
+              <Link href="/book" className="btn btn-signal">
+                Get in touch <ArrowRight size={18} weight="bold" aria-hidden />
+              </Link>
+            </Magnetic>
+            <Magnetic>
+              <Link href="/ventures" className="btn btn-line text-chalk">
+                See what I&apos;m building
+              </Link>
+            </Magnetic>
+          </div>
         </div>
       </div>
 
-      {/* Revealed once the portrait fills the screen (desktop) */}
-      <div className="hero-after pointer-events-none invisible absolute inset-x-0 bottom-0 z-20 hidden px-8 pb-14 md:block">
-        <p className="display max-w-[14ch] text-[6.5vw] leading-[0.9] text-chalk">
+      {/* Portrait: a tall frame on the right that grows to full-bleed */}
+      <div className="hero-photo relative z-0 mx-4 mt-10 aspect-[4/5] overflow-hidden rounded-[22px] sm:mx-6 md:absolute md:bottom-[5vh] md:right-[2.5vw] md:top-[13vh] md:mx-0 md:mt-0 md:aspect-auto md:w-[33vw]">
+        <Image
+          src="/images/shoot/club-shoulder.jpg"
+          alt="Ahmed Gheith on the course, club over his shoulder"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-[62%_22%]"
+        />
+        <div
+          aria-hidden
+          className="hero-shade absolute inset-0 hidden opacity-0 md:block"
+          style={{
+            background:
+              "linear-gradient(90deg, rgb(15 31 69 / 0.75), rgb(15 31 69 / 0.1) 55%, rgb(15 31 69 / 0) 75%), linear-gradient(to top, rgb(15 31 69 / 0.55), transparent 40%)",
+          }}
+        />
+      </div>
+
+      {/* Lands once the portrait fills the screen (desktop) */}
+      <div className="hero-after pointer-events-none invisible absolute inset-y-0 left-0 z-20 hidden items-end px-8 pb-14 md:flex">
+        <p className="display max-w-[12ch] text-[6vw] leading-[0.95] text-chalk">
           Brand. Ecommerce. Performance. Played like golf.
         </p>
       </div>

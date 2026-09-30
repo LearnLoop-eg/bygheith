@@ -29,7 +29,7 @@
   --color-signal: var(--signal);
   --color-signal-ink: var(--signal-ink);
   --font-sans: var(--font-geist), system-ui, sans-serif;
-  --font-display: var(--font-funnel), var(--font-geist), sans-serif;
+  --font-display: var(--font-mona), var(--font-geist), sans-serif;
 }
 
 @layer base {
@@ -63,17 +63,21 @@
 }
 
 @layer components {
+  /* Mona Sans, wide and heavy: the display voice */
   .display {
-    font-family: var(--font-funnel), var(--font-geist), sans-serif;
-    font-weight: 700;
-    letter-spacing: -0.045em;
-    line-height: 0.88;
+    font-family: var(--font-mona), var(--font-geist), sans-serif;
+    font-weight: 800;
+    font-stretch: 112%;
+    font-variation-settings: "wdth" 112;
+    letter-spacing: -0.035em;
+    line-height: 0.92;
   }
   .display-light {
-    font-family: var(--font-funnel), var(--font-geist), sans-serif;
-    font-weight: 300;
-    letter-spacing: -0.035em;
-    line-height: 0.95;
+    font-family: var(--font-mona), var(--font-geist), sans-serif;
+    font-weight: 400;
+    font-stretch: 100%;
+    letter-spacing: -0.025em;
+    line-height: 1.05;
   }
   .label {
     font-size: 0.78rem;
@@ -86,7 +90,8 @@
   .balance { text-wrap: balance; }
 
   /* Split text lines: mask for rising lines */
-  .line-mask { overflow: clip; padding-bottom: 0.06em; margin-bottom: -0.06em; }
+  .line-mask { overflow: clip; padding-bottom: 0.18em; margin-bottom: -0.18em; }
+  .char-mask { padding-bottom: 0.18em; margin-bottom: -0.18em; }
 
   /* Buttons */
   .btn {
@@ -169,12 +174,6 @@
 .lg-static { height: auto !important; }
 .lg-static > div:last-child { height: auto; gap: 3rem; }
 .lg-static .lesson { position: relative !important; margin-top: 2.5rem; }
-
-@media (min-width: 768px) {
-  .hero-photo {
-    clip-path: inset(var(--t, 27vh) var(--s, 38vw) var(--b, 20vh) var(--s, 38vw) round var(--rad, 20px));
-  }
-}
 
 @media (prefers-reduced-motion: reduce) {
   .btn, .btn::before, .link-u { transition: none; }

@@ -16,9 +16,9 @@ export default function AboutPage() {
       <PageIntro
         title="Marketer by trade. Builder by choice."
         intro="I spent a decade growing brands for other people. Now I put the same craft behind the things I own, and play every one of them like a long game."
-        image="/images/shoot/club-shoulder.jpg"
-        imageAlt="Ahmed Gheith with a club over his shoulder by the lake"
-        imagePos="50% 25%"
+        image="/images/shoot/call-fairway.jpg"
+        imageAlt="Ahmed Gheith on a call on the fairway"
+        imagePos="50% 22%"
       />
 
       <section className="grid gap-14 bg-chalk px-5 py-24 text-ink sm:px-8 md:grid-cols-12 md:py-36">
