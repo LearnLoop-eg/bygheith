@@ -17,15 +17,15 @@ export default function GolfPage() {
     <main>
       <PageIntro
         title="The course taught me how to build."
-        intro="I started playing golf at Allegria Golf Club, Sodic, and it quietly became the clearest metaphor I have for how I work. Patience, precision, composure: the game rewards exactly what good strategy demands."
-        image="/images/shoot/club-shoulder.jpg"
-        imageAlt="Ahmed Gheith with a club over his shoulder by the lake"
+        intro="I took up golf at Allegria Golf Club, Sodic. It quickly became the sharpest mirror I have for business: the game punishes ego, rewards patience, and keeps score honestly."
+        image="/images/shoot/golf-cap.jpg"
+        imageAlt="Ahmed Gheith on the course, club in hand"
         imagePos="50% 25%"
       />
 
       <LongGame />
 
-      <section className="px-5 py-28 sm:px-8 md:py-40">
+      <section className="bg-chalk px-5 py-28 text-ink sm:px-8 md:py-40">
         <div className="grid gap-5 md:grid-cols-12">
           <ImageReveal parallax={6} className="aspect-[3/4] rounded-[18px] md:col-span-4">
             <div data-inner className="absolute inset-0">
@@ -49,10 +49,10 @@ export default function GolfPage() {
             Just getting started.
           </SplitReveal>
           <Rise className="md:col-span-5">
-            <p className="text-lg leading-relaxed text-mute">
-              I&apos;m early in my golf journey and documenting it openly: the
-              rounds, the lessons, the slow climb. Follow along on Instagram,
-              where the course and the work meet.
+            <p className="text-xl leading-relaxed text-ink/80">
+              I&apos;m early in the game and documenting it openly: the rounds, the
+              lessons, the slow climb. Follow along on Instagram, where the course
+              and the work meet.
             </p>
             <Magnetic className="mt-8">
               <a href="https://instagram.com/bygheith" target="_blank" rel="noopener noreferrer" className="btn btn-signal">

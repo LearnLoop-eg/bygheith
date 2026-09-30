@@ -1,11 +1,11 @@
 # Design: ByGheith
 
-Dark, cinematic personal-brand site. References: Lando Norris (Awwwards SOTY 2025) for spot-colour discipline and cinematic scroll; By-Kin / Mat Voyce for weighted smooth scroll and kinetic type.
+Cinematic personal-brand site on BR navy with chalk and orange chapters. References: Lando Norris (Awwwards SOTY 2025) for spot-colour discipline and cinematic scroll; By-Kin / Mat Voyce for weighted smooth scroll and kinetic type.
 
 ## Tokens (`src/app/globals.css`)
-- `--ink #0b0c0b` page, `--ink-2/3` surfaces, `--line #2a2e2a` rules
+- `--ink #0f1f45` BR navy page, `--ink-2/3` navy surfaces, `--line #2f4477` rules
 - `--chalk #f2f1ec` text and the one light chapter (ventures, podcast signup)
-- `--mute #9a9d96`, `--mute-dark #80837c` secondary text on ink
+- `--mute #b0bad3`, `--mute-dark #95a1c2` secondary text on navy; footer and marquee on signal orange with navy text
 - `--signal #ff5a1f` spot colour (the orange tab on the BR collar/cap): primary actions, emphasis, the ball flight. Nothing else.
 
 ## Type

@@ -73,8 +73,8 @@ export default function ShootStrip() {
             <span className="text-signal">On the course.</span>
           </h2>
           <p className="mt-6 max-w-[34ch] text-lg text-mute">
-            Most of the work happens between the two. Deals, ideas and decisions,
-            made in the open air.
+            The best decisions rarely happen at a desk. Mine happen between one
+            call and the next shot.
           </p>
         </div>
         {frames.map((f) => (

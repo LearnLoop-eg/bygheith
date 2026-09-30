@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { WhatsappLogo, EnvelopeSimple } from "@phosphor-icons/react";
 import PageIntro from "@/components/PageIntro";
+import { offers } from "@/lib/content";
 
 // Set your real WhatsApp number (international format, no + or spaces)
 const WHATSAPP_NUMBER = "201124444204";
@@ -39,6 +40,29 @@ function BookForm() {
 
   return (
     <div>
+      <fieldset className="mb-12">
+        <legend className="label text-mute">What can I help with?</legend>
+        <div className="mt-4 flex flex-wrap gap-2">
+          {offers.map((o) => {
+            const on = form.topic === o.topic;
+            return (
+              <button
+                key={o.topic}
+                type="button"
+                aria-pressed={on}
+                onClick={() => setForm((f) => ({ ...f, topic: on ? "" : o.topic }))}
+                className={`rounded-full px-5 py-2.5 text-[0.95rem] font-medium transition-[background-color,color,box-shadow] duration-300 active:scale-[0.97] ${
+                  on
+                    ? "bg-signal text-signal-ink"
+                    : "text-chalk shadow-[inset_0_0_0_1.5px_var(--line)] hover:shadow-[inset_0_0_0_1.5px_var(--chalk)]"
+                }`}
+              >
+                {o.title}
+              </button>
+            );
+          })}
+        </div>
+      </fieldset>
       <div className="grid gap-x-10 gap-y-10 sm:grid-cols-2">
         <div>
           <label htmlFor="bk-name" className={label}>
@@ -89,7 +113,7 @@ function BookForm() {
             className="field mt-2"
             value={form.topic}
             onChange={update("topic")}
-            placeholder="Advising, a venture, the podcast…"
+            placeholder="Or tell me in a few words"
           />
         </div>
       </div>
@@ -141,8 +165,8 @@ export default function BookPage() {
   return (
     <main>
       <PageIntro
-        title="Get in touch."
-        intro="I take on a small number of advisory engagements, and I'm always happy to talk to founders and marketers building something. Tell me what you're working on."
+        title="Let's build something."
+        intro="Strategy sessions, ecommerce builds, growth partnerships, talks and podcast guests. I take on a small number each quarter and reply to every message personally."
       />
       <section className="px-5 pb-28 sm:px-8 md:pb-40">
         <div className="max-w-4xl md:ml-[40%]">

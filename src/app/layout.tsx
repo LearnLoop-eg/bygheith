@@ -21,7 +21,7 @@ const geist = localFont({
 });
 
 export const viewport: Viewport = {
-  themeColor: "#0b0c0b",
+  themeColor: "#0f1f45",
 };
 
 export const metadata: Metadata = {
@@ -31,11 +31,11 @@ export const metadata: Metadata = {
     template: "%s | ByGheith",
   },
   description:
-    "Ahmed Gheith, founder & operator. Founder & CEO of LearnLoop, partner at Beyond Reason, and a decade across brand, ecommerce and performance in MENA. Play the long game.",
+    "Ahmed Gheith: founder of LearnLoop, partner at Beyond Reason, leading marketing at Core Livings, Mountain View. A decade of brand, ecommerce and performance marketing in MENA. Play the long game.",
   openGraph: {
     title: "Ahmed Gheith | ByGheith",
     description:
-      "Founder & operator building ventures across MENA. LearnLoop, Beyond Reason, and a decade of marketing, played like golf.",
+      "Founder of LearnLoop. Partner at Beyond Reason. Leading marketing at Core Livings, Mountain View. Played like golf.",
     url: "https://www.bygheith.com",
     siteName: "ByGheith",
     type: "website",

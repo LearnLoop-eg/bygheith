@@ -2,39 +2,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "@phosphor-icons/react/dist/ssr";
 import { SplitReveal, ImageReveal, Counter, Rise } from "@/components/motion/Reveal";
+import { ventures } from "@/lib/content";
 
-const spreads = [
-  {
-    name: "LearnLoop",
-    role: "Founder & CEO",
-    body: "A peer-to-peer skill-exchange platform for Egypt & MENA. Teach a session to earn a credit, spend a credit to learn anything, from Arabic to Python to Shopify.",
-    stats: [
-      { v: "94", l: "skills" },
-      { v: "11", l: "categories" },
-    ],
-    href: "https://joinlearnloop.com",
-    external: true,
-    cta: "Visit LearnLoop",
-    img: "/images/shoot/laptop-front.jpg",
-    alt: "Ahmed Gheith working on a laptop outdoors",
-    pos: "50% 35%",
-  },
-  {
-    name: "Beyond Reason",
-    role: "Partner",
-    body: "Premium golf, tennis and padel apparel. I built the digital engine from scratch: Shopify store, catalog, Meta ads engine, payments and delivery across Egypt.",
-    stats: [
-      { v: "457", l: "SKUs structured" },
-      { v: "1,553", l: "units catalogued" },
-    ],
-    href: "/work",
-    external: false,
-    cta: "See the full build",
-    img: "/images/shoot/call-fairway-side.jpg",
-    alt: "Ahmed Gheith in Beyond Reason golf wear on the course",
-    pos: "50% 30%",
-  },
-];
+const spreads = ventures;
 
 /** Colour-block chapter: the one light room on the page. */
 export default function VenturesSpread({ header = true }: { header?: boolean }) {
@@ -42,8 +12,8 @@ export default function VenturesSpread({ header = true }: { header?: boolean }) 
     <section className="relative bg-chalk px-5 py-28 text-ink sm:px-8 md:py-40">
       {header && (
       <div className="mb-20 flex flex-wrap items-end justify-between gap-6 md:mb-28">
-        <SplitReveal as="h2" className="display text-[15vw] md:text-[9vw]">
-          What I&apos;m building.
+        <SplitReveal as="h2" className="display max-w-[12ch] text-[15vw] md:text-[8vw]">
+          Three games. One playbook.
         </SplitReveal>
         <Link href="/ventures" className="link-u mb-3 text-lg font-semibold">
           All ventures
@@ -79,7 +49,9 @@ export default function VenturesSpread({ header = true }: { header?: boolean }) 
                 {s.name}
               </SplitReveal>
               <Rise>
-                <p className="measure mt-6 text-lg leading-relaxed text-ink/80">{s.body}</p>
+                <p className="mt-5 text-2xl font-medium leading-snug md:text-3xl">{s.line}</p>
+                <p className="measure mt-5 text-lg leading-relaxed text-ink/80">{s.body}</p>
+                {s.stats.length > 0 && (
                 <dl className="mt-10 flex gap-12">
                   {s.stats.map((st) => (
                     <div key={st.l} className="flex flex-col-reverse">
@@ -90,6 +62,7 @@ export default function VenturesSpread({ header = true }: { header?: boolean }) 
                     </div>
                   ))}
                 </dl>
+                )}
                 {s.external ? (
                   <a href={s.href} target="_blank" rel="noopener noreferrer" className="btn btn-line btn-on-light mt-10 text-ink">
                     {s.cta} <ArrowUpRight size={18} weight="bold" aria-hidden />

@@ -1,24 +1,26 @@
 import type { Metadata } from "next";
 import PageIntro from "@/components/PageIntro";
 import VenturesSpread from "@/components/home/VenturesSpread";
+import WorkWithMe from "@/components/home/WorkWithMe";
 
 export const metadata: Metadata = {
   title: "Ventures",
   description:
-    "The things Ahmed Gheith builds and runs: LearnLoop, a peer-to-peer skill-exchange platform for MENA, and Beyond Reason, a premium apparel brand.",
+    "Ahmed Gheith's ventures: founder of LearnLoop, partner at Beyond Reason, and leading marketing at Core Livings, Mountain View.",
 };
 
 export default function VenturesPage() {
   return (
     <main>
       <PageIntro
-        title="The things I build and run."
-        intro="I stopped just advising and started building. These are the ventures I own, where the marketing craft points at something of my own."
+        title="Three ventures. One long game."
+        intro="A platform I founded, a sportswear label I partner in, and the marketing I lead for a living brand inside Mountain View. Different games, the same playbook: clear positioning, real numbers, patient compounding."
         image="/images/shoot/laptop-look.jpg"
         imageAlt="Ahmed Gheith at work outdoors"
         imagePos="60% 40%"
       />
       <VenturesSpread header={false} />
+      <WorkWithMe light={false} />
     </main>
   );
 }

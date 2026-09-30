@@ -7,9 +7,11 @@ import { gsap, ScrollTrigger, registerGsap, prefersReducedMotion } from "./gsap"
 export default function Marquee({
   items,
   className = "",
+  dotClass = "bg-signal",
 }: {
   items: string[];
   className?: string;
+  dotClass?: string;
 }) {
   const track = useRef<HTMLDivElement>(null);
 
@@ -42,7 +44,7 @@ export default function Marquee({
       {items.map((t) => (
         <span key={t} className="flex items-center gap-[4vw] pr-[4vw]">
           <span>{t}</span>
-          <span aria-hidden className="inline-block size-[0.35em] rounded-full bg-signal" />
+          <span aria-hidden className={`inline-block size-[0.3em] rounded-full ${dotClass}`} />
         </span>
       ))}
     </>

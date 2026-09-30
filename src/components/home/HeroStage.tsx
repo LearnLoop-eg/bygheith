@@ -147,14 +147,15 @@ export default function HeroStage() {
         <div
           aria-hidden
           className="absolute inset-0 hidden md:block"
-          style={{ background: "linear-gradient(to top, rgb(11 12 11 / 0.8), rgb(11 12 11 / 0.05) 45%, rgb(11 12 11 / 0) 70%, rgb(11 12 11 / 0.45))" }}
+          style={{ background: "linear-gradient(to top, rgb(15 31 69 / 0.8), rgb(15 31 69 / 0.05) 45%, rgb(15 31 69 / 0) 70%, rgb(15 31 69 / 0.45))" }}
         />
       </div>
 
       {/* Intro + actions */}
       <div className="hero-tail relative z-20 flex flex-col gap-6 px-4 pb-14 pt-8 sm:px-6 md:absolute md:inset-x-0 md:bottom-0 md:flex-row md:items-end md:justify-between md:px-8 md:pb-10">
-        <p className="max-w-[30ch] text-lg leading-snug text-chalk md:text-xl">
-          Founder & operator. I build and run ventures across MENA.
+        <p className="max-w-[34ch] text-lg leading-snug text-chalk md:text-xl">
+          Founder of LearnLoop. Partner at Beyond Reason. Leading marketing at
+          Core Livings, Mountain View.
         </p>
         <div className="flex flex-wrap gap-3">
           <Magnetic>

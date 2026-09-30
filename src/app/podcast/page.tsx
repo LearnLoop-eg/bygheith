@@ -9,9 +9,10 @@ export const metadata: Metadata = {
 };
 
 const seasons = [
-  { theme: "Marketing", blurb: "How brands actually grow: positioning, performance and the craft underneath it all." },
-  { theme: "Building", blurb: "The founder's journey: starting from zero, the messy middle, and staying in the game." },
-  { theme: "Ecommerce", blurb: "From first store to scale: catalogs, conversion, paid media and the numbers behind it." },
+  { theme: "Marketing", blurb: "How brands in MENA actually grow: positioning, performance, and the craft underneath the campaigns." },
+  { theme: "Ecommerce", blurb: "From first store to scale: catalogs, conversion, payments, paid media and the numbers behind them." },
+  { theme: "Real estate", blurb: "Selling a lifestyle, not square metres: how living brands are positioned, launched and filled." },
+  { theme: "Building", blurb: "The founder's road: starting from zero, surviving the messy middle, and staying in the game." },
 ];
 
 export default function PodcastPage() {
@@ -19,7 +20,7 @@ export default function PodcastPage() {
     <main>
       <PageIntro
         title="ByGheith, the podcast."
-        intro="Each season digs into one theme, with honest conversations and lessons from the long game. A run of episodes adds up to something you can actually use."
+        intro="Unfiltered conversations with the founders, marketers and operators building brands in the region. One theme per season, so every run of episodes adds up to a playbook you can use."
         image="/images/shoot/call-sofa.jpg"
         imageAlt="Ahmed Gheith on a call"
         imagePos="50% 28%"

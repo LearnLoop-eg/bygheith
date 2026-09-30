@@ -1,18 +1,17 @@
 @import "tailwindcss";
 
-/* ByGheith: night round.
-   Ink field, chalk type, one signal orange (the tab on the collar and cap). */
 :root {
-  --ink: #0b0c0b;
-  --ink-2: #131513;
-  --ink-3: #1c1f1c;
-  --line: #2a2e2a;
-  --chalk: #f2f1ec;
-  --chalk-2: #e4e2da;
-  --mute: #9a9d96;
-  --mute-dark: #80837c;
+  /* BR navy field, chalk rooms, one signal orange (the tab on the collar and cap). */
+  --ink: #0f1f45;
+  --ink-2: #142854;
+  --ink-3: #1b3163;
+  --line: #2f4477;
+  --chalk: #f3f2ee;
+  --chalk-2: #e6e4dc;
+  --mute: #b0bad3;
+  --mute-dark: #95a1c2;
   --signal: #ff5a1f;
-  --signal-ink: #1a0a03;
+  --signal-ink: #0f1f45;
 
   --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
   --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
@@ -153,6 +152,8 @@
   }
   .field::placeholder { color: var(--mute-dark); }
   .field:focus { border-color: var(--signal); }
+  .field-light { color: var(--ink); border-color: rgb(15 31 69 / 0.25); }
+  .field-light::placeholder { color: rgb(15 31 69 / 0.5); }
 
   /* film grain, fixed, never on scrolling layers */
   .grain {
@@ -160,7 +161,7 @@
     inset: 0;
     z-index: 60;
     pointer-events: none;
-    opacity: 0.06;
+    opacity: 0.05;
     background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
   }
 }
