@@ -1,52 +1,250 @@
 @import "tailwindcss";
 
+/* Sun & Shadow: a sunlit Red Sea courtyard.
+   Terracotta plaster, limewash rooms, cobalt for actions, plum-ink shadow. */
 :root {
-  --pine: #1A3C34;
-  --pine-deep: #122A24;
-  --bone: #F2EDE3;
-  --bone-line: #DAD2C2;
-  --brass: #B08D57;
-  --brass-soft: #C6A878;
-  --sage: #C6D2C9;
-  --ink: #2A271F;
-  --muted: #5A554C;
-  --muted-soft: #8A8275;
+  --wall: #cf7f68;
+  --wall-shade: #b3614c;
+  --wall-deep: #7c3a2d;
+  --lime: #f3f2ee;
+  --lime-line: #ddd6ce;
+  --cobalt: #1f5fd6;
+  --cobalt-press: #174bb0;
+  --ink: #2b1a1f;
+  --ink-soft: #5c3b39;
+  --dusk: #33191d;
+  --dusk-line: #5a3236;
+  --dusk-text: #f1d9cf;
+  --palm: #2e5a3e;
+
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 @theme inline {
-  --color-pine: var(--pine);
-  --color-pine-deep: var(--pine-deep);
-  --color-bone: var(--bone);
-  --color-bone-line: var(--bone-line);
-  --color-brass: var(--brass);
-  --color-brass-soft: var(--brass-soft);
-  --color-sage: var(--sage);
+  --color-wall: var(--wall);
+  --color-wall-shade: var(--wall-shade);
+  --color-wall-deep: var(--wall-deep);
+  --color-lime: var(--lime);
+  --color-lime-line: var(--lime-line);
+  --color-cobalt: var(--cobalt);
+  --color-cobalt-press: var(--cobalt-press);
   --color-ink: var(--ink);
-  --color-muted: var(--muted);
-  --color-muted-soft: var(--muted-soft);
-  --font-display: var(--font-fraunces);
-  --font-body: var(--font-inter);
+  --color-ink-soft: var(--ink-soft);
+  --color-dusk: var(--dusk);
+  --color-dusk-line: var(--dusk-line);
+  --color-dusk-text: var(--dusk-text);
+  --color-palm: var(--palm);
+  --font-sans: var(--font-archivo), system-ui, sans-serif;
+  --font-arabic: var(--font-alexandria), sans-serif;
 }
 
+@property --sun-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 112deg;
+}
+
+@property --sun-shift {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 0px;
+}
+
+@keyframes sun-travel {
+  from { --sun-angle: 104deg; --sun-shift: 0px; }
+  to { --sun-angle: 132deg; --sun-shift: 520px; }
+}
+
+@keyframes arch-open {
+  to { clip-path: inset(0 0 0 0 round 999px 999px 6px 6px); }
+}
+
+@layer base {
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  background: var(--dusk);
+  scrollbar-color: var(--wall-shade) var(--lime);
+}
 body {
-  background: var(--bone);
+  background: var(--lime);
   color: var(--ink);
-  font-family: var(--font-inter), system-ui, sans-serif;
+  font-family: var(--font-archivo), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
   margin: 0;
+  caret-color: var(--cobalt);
 }
-::selection { background: var(--brass); color: var(--pine); }
-.font-display { font-family: var(--font-fraunces), Georgia, serif; }
-.eyebrow {
-  font-size: 0.72rem;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--brass);
-  font-weight: 500;
-}
+::selection { background: var(--cobalt); color: #fff; }
 a { color: inherit; text-decoration: none; }
+:focus-visible {
+  outline: 2px solid var(--cobalt);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+}
+
+@layer components {
+
+/* ---------- Type ---------- */
+/* Wide architectural display: Archivo at its expanded width. */
+.display {
+  font-family: var(--font-archivo), system-ui, sans-serif;
+  font-stretch: 125%;
+  font-variation-settings: "wdth" 125;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 0.95;
+  text-wrap: balance;
+}
+.display-md {
+  font-stretch: 118%;
+  font-variation-settings: "wdth" 118;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  text-wrap: balance;
+}
+.inscription {
+  font-stretch: 125%;
+  font-variation-settings: "wdth" 125;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.arabic { font-family: var(--font-alexandria), sans-serif; }
+.num { font-variant-numeric: tabular-nums lining-nums; }
+.prose-body { max-width: 65ch; text-wrap: pretty; }
+
+/* ---------- Pergola shadow: the signature ---------- */
+.pergola {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  mix-blend-mode: multiply;
+  background-image: repeating-linear-gradient(
+    var(--sun-angle),
+    transparent 0 38px,
+    rgb(92 30 24 / 0.08) 46px,
+    rgb(92 30 24 / 0.2) 56px 84px,
+    rgb(92 30 24 / 0.08) 94px,
+    transparent 102px 128px
+  );
+  background-position: var(--sun-shift) 0;
+  -webkit-mask-image: linear-gradient(100deg, #000 0%, #000 55%, transparent 100%);
+  mask-image: linear-gradient(100deg, #000 0%, #000 55%, transparent 100%);
+}
+.pergola-soft { opacity: 0.55; }
+.pergola-dusk {
+  mix-blend-mode: soft-light;
+  opacity: 0.5;
+}
+@supports (animation-timeline: scroll()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .pergola {
+      animation: sun-travel linear both;
+      animation-timeline: scroll(root);
+    }
+  }
+}
+
+/* ---------- Arch openings ---------- */
+.arch {
+  border-radius: 999px 999px 6px 6px;
+  overflow: hidden;
+  isolation: isolate;
+}
+.arch-reveal {
+  clip-path: inset(100% 0 0 0 round 999px 999px 6px 6px);
+  animation: arch-open 1100ms var(--ease-out) 150ms forwards;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  white-space: nowrap;
+  border-radius: 999px;
+  padding: 0.95rem 1.6rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition:
+    transform 160ms var(--ease-out),
+    background-color 200ms ease,
+    color 200ms ease,
+    border-color 200ms ease;
+}
+.btn:active { transform: scale(0.97); }
+.btn svg { transition: transform 240ms var(--ease-out); }
+.btn-primary { background: var(--cobalt); color: #fff; }
+.btn-ghost { border: 1.5px solid currentColor; }
+.btn-light { background: var(--lime); color: var(--ink); }
+@media (hover: hover) and (pointer: fine) {
+  .btn-primary:hover { background: var(--cobalt-press); }
+  .btn-ghost:hover { background: var(--ink); color: var(--lime); border-color: var(--ink); }
+  .btn-light:hover { background: #fff; }
+  .btn:hover svg { transform: translateX(3px); }
+}
+
+.link-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 6px;
+  text-decoration-color: color-mix(in srgb, currentColor 35%, transparent);
+  transition: text-decoration-color 200ms ease;
+}
+.link-arrow svg { transition: transform 240ms var(--ease-out); }
+@media (hover: hover) and (pointer: fine) {
+  .link-arrow:hover { text-decoration-color: currentColor; }
+  .link-arrow:hover svg { transform: translateX(3px); }
+}
+
+/* ---------- Fields ---------- */
+.field {
+  width: 100%;
+  border-radius: 10px;
+  border: 1.5px solid var(--lime-line);
+  background: #fff;
+  color: var(--ink);
+  padding: 0.85rem 1rem;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+.field::placeholder { color: #8a716c; }
+.field:focus {
+  border-color: var(--cobalt);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--cobalt) 22%, transparent);
+}
+
+/* ---------- Light falls on content ---------- */
+.reveal {
+  transition:
+    opacity 700ms var(--ease-out),
+    transform 700ms var(--ease-out),
+    filter 700ms var(--ease-out);
+}
+.reveal[data-in="false"] {
+  opacity: 0;
+  transform: translateY(18px);
+  filter: brightness(0.8) saturate(0.8);
+}
+
 @media (prefers-reduced-motion: reduce) {
-  * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+  html { scroll-behavior: auto; }
+  .arch-reveal { animation: none; clip-path: none; }
+  .reveal, .reveal[data-in="false"] {
+    opacity: 1;
+    transform: none;
+    filter: none;
+    transition: none;
+  }
+  .btn, .btn svg, .link-arrow svg { transition: none; }
+}
 }

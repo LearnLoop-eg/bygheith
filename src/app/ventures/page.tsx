@@ -1,102 +1,90 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import { Section, Eyebrow } from "@/components/Section";
+import { ArrowRight, ArrowUpRight } from "@phosphor-icons/react/dist/ssr";
+import { Section, Pergola } from "@/components/Section";
+import PageHero from "@/components/PageHero";
+import Reveal from "@/components/Reveal";
+import Closing from "@/components/Closing";
 import { ventures } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Ventures",
   description:
-    "The things I build and run — LearnLoop, a peer-to-peer skill-exchange platform for MENA, and Beyond Reason, a premium apparel brand.",
+    "The things I build and run: LearnLoop, a peer-to-peer skill-exchange platform for MENA, and Beyond Reason, a premium apparel brand.",
 };
+
+const rooms = [
+  { bg: "bg-cobalt text-white", sub: "text-white/85", line: "border-white/25", pergola: false },
+  { bg: "bg-wall text-ink", sub: "text-ink", line: "border-ink/20", pergola: true },
+];
 
 export default function VenturesPage() {
   return (
     <main>
-      <div className="bg-[var(--pine)] text-[var(--bone)]">
-        <Section className="py-20">
-          <Eyebrow>
-            <span className="text-[var(--brass-soft)]">Ventures</span>
-          </Eyebrow>
-          <h1 className="font-display mt-3 max-w-3xl text-4xl font-medium leading-tight md:text-5xl">
-            The things I build and run.
-          </h1>
-          <p className="mt-4 max-w-xl text-sm leading-relaxed text-[var(--sage)]">
-            I stopped just advising and started building. These are the ventures
-            I own — where the marketing craft points at something of my own, and
-            where I play the long game.
-          </p>
-        </Section>
-      </div>
+      <PageHero
+        title="The things I build and run."
+        intro="I stopped just advising and started building. These are the ventures I own, where the marketing craft points at something of my own."
+      />
 
-      <Section className="space-y-8 py-16">
-        {ventures.map((v) => (
-          <div
-            key={v.slug}
-            className="rounded-xl border border-[var(--bone-line)] bg-white p-8 md:p-10"
-          >
-            <span className="inline-block rounded-md bg-[var(--bone)] px-3 py-1 text-xs font-medium tracking-[0.14em] text-[var(--brass)]">
-              {v.role.toUpperCase()}
-            </span>
-            <h2 className="font-display mt-4 text-3xl font-medium text-[var(--pine)] md:text-4xl">
-              {v.name}
-            </h2>
-            <p className="mt-4 max-w-2xl text-[15px] leading-relaxed text-[var(--ink)]">
-              {v.description}
-            </p>
-
-            <div className="mt-8 grid grid-cols-1 gap-3 md:grid-cols-3">
-              {v.metrics.map((m) => (
-                <div
-                  key={m.label}
-                  className="rounded-lg bg-[var(--bone)] px-5 py-4"
-                >
-                  <p className="font-display text-2xl font-medium text-[var(--pine)] [hyphens:none]">
-                    {m.value}
-                  </p>
-                  <p className="mt-1 text-xs text-[var(--muted-soft)] [hyphens:none]">
-                    {m.label}
-                  </p>
+      <Section className="space-y-6 py-16 md:py-24">
+        {ventures.map((v, i) => {
+          const r = rooms[i % rooms.length];
+          return (
+            <Reveal key={v.slug} as="article">
+              <div
+                className={`relative overflow-hidden rounded-[6px] p-8 md:p-14 ${r.bg}`}
+              >
+                {r.pergola && <Pergola variant="soft" />}
+                <div className="relative grid gap-10 lg:grid-cols-12">
+                  <div className="lg:col-span-7">
+                    <h2 className="display text-5xl md:text-7xl">{v.name}</h2>
+                    <p className={`mt-3 text-lg font-semibold ${r.sub}`}>{v.role}</p>
+                    <p className={`prose-body mt-6 text-lg leading-relaxed ${r.sub}`}>
+                      {v.description}
+                    </p>
+                    <div className="mt-9">
+                      {v.external ? (
+                        <a
+                          href={v.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="link-arrow"
+                        >
+                          {v.linkLabel}
+                          <ArrowUpRight size={16} weight="bold" aria-hidden />
+                        </a>
+                      ) : (
+                        <Link href={v.href} className="link-arrow">
+                          {v.linkLabel}
+                          <ArrowRight size={16} weight="bold" aria-hidden />
+                        </Link>
+                      )}
+                    </div>
+                  </div>
+                  <dl className="lg:col-span-4 lg:col-start-9 lg:self-end">
+                    {v.metrics.filter((m) => m.label !== "Role").map((m) => (
+                      <div
+                        key={m.label}
+                        className={`flex items-baseline justify-between gap-6 border-t py-4 ${r.line}`}
+                      >
+                        <dt className={`text-sm ${r.sub}`}>{m.label}</dt>
+                        <dd className="display-md num text-right text-3xl md:text-4xl">
+                          {m.value}
+                        </dd>
+                      </div>
+                    ))}
+                  </dl>
                 </div>
-              ))}
-            </div>
-
-            {v.external ? (
-              <a
-                href={v.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-8 inline-block text-sm font-medium text-[var(--brass)] transition-opacity hover:opacity-80"
-              >
-                {v.linkLabel} →
-              </a>
-            ) : (
-              <Link
-                href={v.href}
-                className="mt-8 inline-block text-sm font-medium text-[var(--brass)] transition-opacity hover:opacity-80"
-              >
-                {v.linkLabel} →
-              </Link>
-            )}
-          </div>
-        ))}
+              </div>
+            </Reveal>
+          );
+        })}
       </Section>
 
-      <div className="bg-[var(--pine)] text-[var(--bone)]">
-        <Section className="py-16 text-center">
-          <h2 className="font-display text-2xl font-medium md:text-3xl">
-            Building something of your own?
-          </h2>
-          <p className="mx-auto mt-4 max-w-md text-sm text-[var(--sage)]">
-            I&apos;m always happy to talk shop with founders and marketers.
-          </p>
-          <Link
-            href="/book"
-            className="mt-6 inline-block rounded-md bg-[var(--brass)] px-7 py-3 text-sm font-medium text-[var(--pine)] transition-opacity hover:opacity-90"
-          >
-            Get in touch
-          </Link>
-        </Section>
-      </div>
+      <Closing
+        title="Building something of your own?"
+        body="I'm always happy to talk shop with founders and marketers."
+      />
     </main>
   );
 }

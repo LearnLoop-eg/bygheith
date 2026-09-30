@@ -8,23 +8,26 @@ export function Section({
   id?: string;
 }) {
   return (
-    <section id={id} className={`mx-auto max-w-6xl px-6 ${className}`}>
+    <section
+      id={id}
+      className={`mx-auto w-full max-w-[1320px] px-5 sm:px-8 lg:px-12 ${className}`}
+    >
       {children}
     </section>
   );
 }
 
-export function Eyebrow({
-  index,
-  children,
+/** Diagonal pergola shadows. Drifts with scroll (CSS scroll timeline). */
+export function Pergola({
+  variant = "wall",
 }: {
-  index?: string;
-  children: React.ReactNode;
+  variant?: "wall" | "soft" | "dusk";
 }) {
-  return (
-    <p className="eyebrow">
-      {index && <span className="mr-2">{index}</span>}
-      {children}
-    </p>
-  );
+  const cls =
+    variant === "soft"
+      ? "pergola pergola-soft"
+      : variant === "dusk"
+        ? "pergola pergola-dusk"
+        : "pergola";
+  return <div aria-hidden className={cls} />;
 }

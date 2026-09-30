@@ -16,7 +16,7 @@ export const ventures = [
     linkLabel: "Visit LearnLoop",
     external: true,
     description:
-      "A peer-to-peer skill-exchange platform for Egypt & MENA. People teach what they know and learn what they love — no money, just credits. Teach a session to earn a credit, spend a credit to learn anything, from Arabic to Python to Shopify. 94 skills across 11 categories.",
+      "A peer-to-peer skill-exchange platform for Egypt & MENA. People teach what they know and learn what they love. No money, just credits. Teach a session to earn a credit, spend a credit to learn anything, from Arabic to Python to Shopify. 94 skills across 11 categories.",
     metrics: [
       { label: "Skills", value: "94" },
       { label: "Categories", value: "11" },
@@ -31,7 +31,7 @@ export const ventures = [
     linkLabel: "See the full build",
     external: false,
     description:
-      "A premium golf, tennis and padel apparel brand. I built the digital engine from scratch — a Shopify store, a 457-SKU catalog, a Meta ads performance engine, payments, Instagram Shopping and a delivery network mapped across Egypt. The full digital build, end to end.",
+      "A premium golf, tennis and padel apparel brand. I built the digital engine from scratch: a Shopify store, a 457-SKU catalog, a Meta ads performance engine, payments, Instagram Shopping and a delivery network mapped across Egypt. The full digital build, end to end.",
     metrics: [
       { label: "SKUs structured", value: "457" },
       { label: "Units catalogued", value: "1,553" },
@@ -46,7 +46,7 @@ export const caseStudies = [
     tag: "Ecommerce build",
     title: "Beyond Reason",
     summary:
-      "Built the full digital engine for a premium golf, tennis and padel apparel brand — from store to scale.",
+      "Built the full digital engine for a premium golf, tennis and padel apparel brand, from store to scale.",
     detail:
       "Shopify store designed from scratch, a 457-SKU / 1,553-unit catalog structured and imported, Paymob and valU payment integration, Instagram Shopping for Egypt, and a delivery network mapped across Egyptian governorates.",
     metrics: [
@@ -76,7 +76,7 @@ export const caseStudies = [
     summary:
       "Positioning, identity and creative direction for a premium launch in a crowded market.",
     detail:
-      "Brand identity, collection naming, product storytelling, Instagram grid strategy, and a creative system — including a Reels production workflow — that gave a new brand a premium, consistent voice from day one.",
+      "Brand identity, collection naming, product storytelling, Instagram grid strategy, and a creative system, including a Reels production workflow, that gave a new brand a premium, consistent voice from day one.",
     metrics: [
       { label: "Scope", value: "End-to-end" },
       { label: "Output", value: "Identity" },

@@ -1,7 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { Section, Eyebrow } from "@/components/Section";
+import { WhatsappLogo, EnvelopeSimple } from "@phosphor-icons/react";
+import { Section } from "@/components/Section";
+import PageHero from "@/components/PageHero";
 
 // Set your real WhatsApp number (international format, no + or spaces)
 const WHATSAPP_NUMBER = "201124444204";
@@ -24,7 +26,7 @@ function BookForm() {
   const whatsappHref = () => {
     const text = [
       `Hi Gheith, I'd like to get in touch.`,
-      `Name: ${form.name || "—"}`,
+      `Name: ${form.name || "-"}`,
       form.company ? `Company: ${form.company}` : "",
       form.topic ? `About: ${form.topic}` : "",
       form.message ? `Note: ${form.message}` : "",
@@ -34,92 +36,102 @@ function BookForm() {
     return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
   };
 
-  const input =
-    "w-full rounded-md border border-[var(--bone-line)] bg-[var(--bone)] px-4 py-3 text-sm outline-none focus:border-[var(--brass)]";
+  const label = "block text-[0.95rem] font-semibold text-ink";
 
   return (
-    <div className="rounded-xl border border-[var(--bone-line)] bg-white p-8">
-      <div className="grid gap-4 sm:grid-cols-2">
+    <div className="rounded-[6px] bg-white p-6 border border-lime-line sm:p-10">
+      <div className="grid gap-6 sm:grid-cols-2">
         <div>
-          <label className="text-sm font-medium text-[var(--ink)]">Name</label>
+          <label htmlFor="bk-name" className={label}>
+            Name
+          </label>
           <input
-            className={`mt-1 ${input}`}
+            id="bk-name"
+            autoComplete="name"
+            className="field mt-2"
             value={form.name}
             onChange={update("name")}
             placeholder="Your name"
           />
         </div>
         <div>
-          <label className="text-sm font-medium text-[var(--ink)]">Email</label>
+          <label htmlFor="bk-email" className={label}>
+            Email
+          </label>
           <input
+            id="bk-email"
             type="email"
-            className={`mt-1 ${input}`}
+            autoComplete="email"
+            className="field mt-2"
             value={form.email}
             onChange={update("email")}
             placeholder="you@email.com"
           />
         </div>
         <div>
-          <label className="text-sm font-medium text-[var(--ink)]">
-            Company <span className="text-[var(--muted-soft)]">(optional)</span>
+          <label htmlFor="bk-company" className={label}>
+            Company <span className="font-normal text-ink-soft">(optional)</span>
           </label>
           <input
-            className={`mt-1 ${input}`}
+            id="bk-company"
+            autoComplete="organization"
+            className="field mt-2"
             value={form.company}
             onChange={update("company")}
             placeholder="Brand or company"
           />
         </div>
         <div>
-          <label className="text-sm font-medium text-[var(--ink)]">
+          <label htmlFor="bk-topic" className={label}>
             What&apos;s this about?
           </label>
           <input
-            className={`mt-1 ${input}`}
+            id="bk-topic"
+            className="field mt-2"
             value={form.topic}
             onChange={update("topic")}
             placeholder="Advising, a venture, the podcast…"
           />
         </div>
       </div>
-      <div className="mt-4">
-        <label className="text-sm font-medium text-[var(--ink)]">
+      <div className="mt-6">
+        <label htmlFor="bk-message" className={label}>
           Tell me what you&apos;re working on
         </label>
         <textarea
-          rows={4}
-          className={`mt-1 ${input} resize-none`}
+          id="bk-message"
+          rows={5}
+          className="field mt-2 resize-none"
           value={form.message}
           onChange={update("message")}
           placeholder="A sentence or two about what you're building."
         />
       </div>
 
-      <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+      <div className="mt-8 grid gap-3 sm:grid-cols-2">
         <a
           href={whatsappHref()}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex-1 rounded-md bg-[var(--brass)] px-6 py-3 text-center text-sm font-medium text-[var(--pine)] transition-opacity hover:opacity-90"
+          className="btn btn-primary w-full"
         >
+          <WhatsappLogo size={20} weight="bold" aria-hidden />
           Send via WhatsApp
         </a>
-        <form action={FORM_ENDPOINT} method="POST" className="flex-1">
+        <form action={FORM_ENDPOINT} method="POST">
           <input type="hidden" name="name" value={form.name} />
           <input type="hidden" name="email" value={form.email} />
           <input type="hidden" name="company" value={form.company} />
           <input type="hidden" name="topic" value={form.topic} />
           <input type="hidden" name="message" value={form.message} />
-          <button
-            type="submit"
-            className="w-full rounded-md border border-[var(--pine)] px-6 py-3 text-sm font-medium text-[var(--pine)] transition-colors hover:bg-[var(--pine)] hover:text-[var(--bone)]"
-          >
+          <button type="submit" className="btn btn-ghost w-full text-ink">
+            <EnvelopeSimple size={20} weight="bold" aria-hidden />
             Send by email
           </button>
         </form>
       </div>
-      <p className="mt-4 text-xs text-[var(--muted-soft)]">
-        I reply personally, usually within a day. No account managers — just a
+      <p className="mt-5 text-sm text-ink-soft">
+        I reply personally, usually within a day. No account managers, just a
         direct line to me.
       </p>
     </div>
@@ -129,25 +141,17 @@ function BookForm() {
 export default function BookPage() {
   return (
     <main>
-      <div className="bg-[var(--pine)] text-[var(--bone)]">
-        <Section className="py-20">
-          <Eyebrow>
-            <span className="text-[var(--brass-soft)]">Get in touch</span>
-          </Eyebrow>
-          <h1 className="font-display mt-3 max-w-2xl text-4xl font-medium leading-tight md:text-5xl">
-            Get in touch
-          </h1>
-          <p className="mt-4 max-w-xl text-sm leading-relaxed text-[var(--sage)]">
-            I take on a small number of advisory engagements, and I&apos;m
-            always happy to talk to founders and marketers building something.
-            Tell me what you&apos;re working on.
-          </p>
+      <PageHero
+        title="Get in touch"
+        intro="I take on a small number of advisory engagements, and I'm always happy to talk to founders and marketers building something. Tell me what you're working on."
+      />
+      <div className="bg-lime">
+        <Section className="py-16 md:py-24">
+          <div className="mx-auto max-w-3xl">
+            <BookForm />
+          </div>
         </Section>
       </div>
-
-      <Section className="py-16">
-        <BookForm />
-      </Section>
     </main>
   );
 }

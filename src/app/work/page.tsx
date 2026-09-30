@@ -1,6 +1,8 @@
-import Link from "next/link";
 import type { Metadata } from "next";
-import { Section, Eyebrow } from "@/components/Section";
+import { Section } from "@/components/Section";
+import PageHero from "@/components/PageHero";
+import Reveal from "@/components/Reveal";
+import Closing from "@/components/Closing";
 import { caseStudies } from "@/lib/content";
 
 export const metadata: Metadata = {
@@ -12,71 +14,50 @@ export const metadata: Metadata = {
 export default function WorkPage() {
   return (
     <main>
-      <div className="bg-[var(--pine)] text-[var(--bone)]">
-        <Section className="py-20">
-          <Eyebrow>
-            <span className="text-[var(--brass-soft)]">Work</span>
-          </Eyebrow>
-          <h1 className="font-display mt-3 max-w-2xl text-4xl font-medium md:text-5xl">
-            Strategy you can see in the numbers.
-          </h1>
-          <p className="mt-4 max-w-xl text-sm leading-relaxed text-[var(--sage)]">
-            A decade across the agency side, the media side and the brand side.
-            A few of the projects I&apos;m proud of.
-          </p>
-        </Section>
-      </div>
+      <PageHero
+        title="Strategy you can see in the numbers."
+        intro="A decade across the agency side, the media side and the brand side. A few of the projects I'm proud of."
+      />
 
-      <Section className="space-y-12 py-16">
+      <Section className="py-16 md:py-24">
         {caseStudies.map((c, i) => (
-          <div
-            key={c.slug}
-            className="rounded-xl border border-[var(--bone-line)] bg-white p-8"
-          >
-            <span className="text-xs tracking-[0.14em] text-[var(--muted-soft)]">
-              {String(i + 1).padStart(2, "0")} · {c.tag.toUpperCase()}
-            </span>
-            <h2 className="font-display mt-2 text-2xl font-medium text-[var(--pine)]">
-              {c.title}
-            </h2>
-            <p className="mt-3 text-sm leading-relaxed text-[var(--muted)]">
-              {c.summary}
-            </p>
-            <p className="mt-3 text-sm leading-relaxed text-[var(--ink)]">
-              {c.detail}
-            </p>
-            <div className="mt-6 grid grid-cols-1 gap-3 md:grid-cols-3">
-              {c.metrics.map((m) => (
-                <div
-                  key={m.label}
-                  className="flex items-center gap-4 rounded-lg bg-[var(--bone)] px-5 py-4 md:block"
-                >
-                  <p className="font-display text-2xl font-medium text-[var(--pine)]">
-                    {m.value}
-                  </p>
-                  <p className="text-xs text-[var(--muted-soft)] md:mt-1">
-                    {m.label}
-                  </p>
-                </div>
-              ))}
+          <Reveal as="article" key={c.slug}>
+            <div
+              className={`grid gap-8 py-12 md:grid-cols-12 md:gap-10 md:py-16 ${
+                i > 0 ? "border-t border-lime-line" : ""
+              }`}
+            >
+              <div className="md:col-span-7">
+                <h2 className="display text-4xl md:text-6xl">{c.title}</h2>
+                <p className="mt-3 text-lg font-semibold text-wall-deep">{c.tag}</p>
+                <p className="display-md mt-6 text-xl leading-snug md:text-2xl">
+                  {c.summary}
+                </p>
+                <p className="prose-body mt-5 text-lg leading-relaxed text-ink-soft">
+                  {c.detail}
+                </p>
+              </div>
+              {c.metrics.some((m) => /\d/.test(m.value)) && (
+                <dl className="self-end md:col-span-4 md:col-start-9">
+                  {c.metrics
+                    .filter((m) => /\d/.test(m.value))
+                    .map((m) => (
+                      <div
+                        key={m.label}
+                        className="flex items-baseline justify-between gap-6 border-t border-ink/20 py-4"
+                      >
+                        <dt className="text-ink-soft">{m.label}</dt>
+                        <dd className="display-md num text-3xl md:text-4xl">{m.value}</dd>
+                      </div>
+                    ))}
+                </dl>
+              )}
             </div>
-          </div>
+          </Reveal>
         ))}
       </Section>
 
-      <div className="bg-[var(--pine)] text-[var(--bone)]">
-        <Section className="py-16 text-center">
-          <h2 className="font-display text-2xl font-medium md:text-3xl">
-            Building something? Let&apos;s talk shop.
-          </h2>
-          <Link
-            href="/book"
-            className="mt-6 inline-block rounded-md bg-[var(--brass)] px-7 py-3 text-sm font-medium text-[var(--pine)] transition-opacity hover:opacity-90"
-          >
-            Get in touch
-          </Link>
-        </Section>
-      </div>
+      <Closing title="Building something? Let's talk shop." />
     </main>
   );
 }
