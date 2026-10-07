@@ -131,8 +131,8 @@ export default function HeroStage() {
 
         <div className="hero-tail mt-8 flex flex-col gap-7 md:mt-12">
           <p className="max-w-[36ch] text-lg leading-snug text-chalk/90 md:text-xl">
-            Founder of LearnLoop. Partner at Beyond Reason. Leading marketing at
-            Core Livings, Mountain View.
+            Marketing &amp; ecommerce consultant. Partner at Beyond Reason. Leading
+            marketing at Core Livings, Mountain View.
           </p>
           <div className="flex flex-wrap gap-3">
             <Magnetic>

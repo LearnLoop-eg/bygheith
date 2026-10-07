@@ -37,7 +37,7 @@ export default function Home() {
             <p className="text-xl leading-relaxed text-ink/80">
               Forbes Middle East, Mountain View, Cassbana, Digitology. The agency,
               media and brand side of the region. Today that playbook runs a
-              platform, a sportswear label and a living brand.
+              consulting practice, a sportswear label and a living brand.
             </p>
             <Link href="/about" className="btn btn-line btn-on-light mt-8 text-ink">
               The full story <ArrowRight size={18} weight="bold" aria-hidden />

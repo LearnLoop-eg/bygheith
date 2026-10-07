@@ -14,7 +14,7 @@ web
 
 ## Product Purpose
 
-bygheith.com is Ahmed Gheith's personal brand site. It shows what he builds (LearnLoop, Beyond Reason), the decade of marketing, brand and ecommerce work behind it, his golf journey as the lens on how he works, and an upcoming podcast. Success means a visitor leaves knowing who he is and what he builds, and the right people reach out.
+bygheith.com is Ahmed Gheith's personal brand site. It shows what he builds (his marketing and ecommerce consulting practice, Beyond Reason), the decade of marketing, brand and ecommerce work behind it, his golf journey as the lens on how he works, and an upcoming podcast. Success means a visitor leaves knowing who he is and what he builds, and the right people reach out.
 
 ## Positioning
 
@@ -41,7 +41,8 @@ A founder-operator who went from agency/media/brand-side marketing (Forbes Middl
 
 ## Evidence on Hand
 
-- Real facts: LearnLoop (94 skills, 11 categories, Founder & CEO); Beyond Reason (457 SKUs, 1,553 units, partner; Shopify, Paymob, valU, Instagram Shopping, Meta ads at 30k EGP/month).
+- LearnLoop is deliberately off the site until it is more mature (Oct 2026); the marketing and ecommerce consultant positioning takes its place. Do not re-add it unless asked.
+- Real facts: Beyond Reason (457 SKUs, 1,553 units, partner; Shopify, Paymob, valU, Instagram Shopping, Meta ads at 30k EGP/month).
 - Career history listed in src/lib/content.ts.
 - Photos: professional shoot in public/images/shoot/ (13 images: golf, calls, laptop, tablet); older photos in public/images/.
 - No testimonials, client logos files, press, or podcast episodes exist yet. Do not fabricate them.

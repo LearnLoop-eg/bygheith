@@ -7,7 +7,7 @@ import { credentials } from "@/lib/content";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Ahmed Gheith: founder of LearnLoop, partner at Beyond Reason, leading marketing at Core Livings, Mountain View. A decade across brand, ecommerce and performance in MENA.",
+    "Ahmed Gheith: marketing and ecommerce consultant, partner at Beyond Reason, leading marketing at Core Livings, Mountain View. A decade across brand, ecommerce and performance in MENA.",
 };
 
 export default function AboutPage() {
@@ -36,11 +36,11 @@ export default function AboutPage() {
                 where most of them stall.
               </p>
               <p className="measure">
-                Then I started building. I founded LearnLoop, a peer-to-peer
-                skill-exchange platform for Egypt and MENA. I became a partner at
-                Beyond Reason and built its digital engine from zero. And today I
-                lead marketing at Core Livings, the rentals, resale and property
-                management brand inside Mountain View communities.
+                Then I started building. I became a partner at Beyond Reason
+                and built its digital engine from zero. I consult independently
+                on marketing and ecommerce for premium brands across MENA. And
+                today I lead marketing at Core Livings, the rentals, resale and
+                property management brand inside Mountain View communities.
               </p>
               <p className="measure">
                 Away from the screen, I play golf. It&apos;s the clearest metaphor I

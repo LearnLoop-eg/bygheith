@@ -32,11 +32,11 @@ export const metadata: Metadata = {
     template: "%s | ByGheith",
   },
   description:
-    "Ahmed Gheith: founder of LearnLoop, partner at Beyond Reason, leading marketing at Core Livings, Mountain View. A decade of brand, ecommerce and performance marketing in MENA. Play the long game.",
+    "Ahmed Gheith: marketing and ecommerce consultant, partner at Beyond Reason, leading marketing at Core Livings, Mountain View. A decade of brand, ecommerce and performance marketing in MENA. Play the long game.",
   openGraph: {
     title: "Ahmed Gheith | ByGheith",
     description:
-      "Founder of LearnLoop. Partner at Beyond Reason. Leading marketing at Core Livings, Mountain View. Played like golf.",
+      "Marketing and ecommerce consultant. Partner at Beyond Reason. Leading marketing at Core Livings, Mountain View. Played like golf.",
     url: "https://www.bygheith.com",
     siteName: "ByGheith",
     type: "website",

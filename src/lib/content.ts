@@ -1,5 +1,5 @@
 export const roles = [
-  { org: "LearnLoop", role: "Founder" },
+  { org: "Marketing & Ecommerce", role: "Consultant" },
   { org: "Beyond Reason", role: "Partner" },
   { org: "Core Livings, Mountain View", role: "Leading marketing" },
 ];
@@ -12,7 +12,6 @@ export const trustedBy = [
   "Cassbana",
   "Digitology",
   "The Creative Zone",
-  "LearnLoop",
 ];
 
 export type Venture = {
@@ -32,18 +31,15 @@ export type Venture = {
 
 export const ventures: Venture[] = [
   {
-    slug: "learnloop",
-    name: "LearnLoop",
-    role: "Founder",
-    line: "The skill economy, without the money.",
-    body: "A peer-to-peer skill-exchange platform for Egypt and MENA. Teach what you know, earn a credit, spend it to learn anything, from Arabic to Python to Shopify. I founded it, and I build it end to end: product, brand and growth.",
-    stats: [
-      { v: "94", l: "skills live" },
-      { v: "11", l: "categories" },
-    ],
-    href: "https://joinlearnloop.com",
-    external: true,
-    cta: "Visit LearnLoop",
+    slug: "consulting",
+    name: "Consulting",
+    role: "Marketing & ecommerce consultant",
+    line: "Brand, growth and ecommerce, led personally.",
+    body: "Strategy, Shopify builds and performance marketing for premium brands in Egypt and MENA. I lead the thinking and the client work myself, and my team executes. A decade of lessons, applied to your brand.",
+    stats: [{ v: "10+", l: "years across MENA" }],
+    href: "/book",
+    external: false,
+    cta: "Book a session",
     img: "/images/shoot/laptop-front.jpg",
     alt: "Ahmed Gheith working on a laptop outdoors",
     pos: "50% 35%",
@@ -129,9 +125,9 @@ export const credentials = [
     note: "Built the digital strategy, online store and creative direction of a premium sportswear brand from the ground up.",
   },
   {
-    role: "Founder",
-    org: "LearnLoop",
-    note: "Founded and building a peer-to-peer skill-exchange platform for Egypt and MENA.",
+    role: "Marketing & ecommerce consultant",
+    org: "ByGheith",
+    note: "Independent strategy, Shopify builds and performance marketing for premium brands in MENA.",
   },
   {
     role: "Senior Digital Marketing Manager",

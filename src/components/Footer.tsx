@@ -44,8 +44,8 @@ export default function Footer() {
 
         <div className="mt-24 grid gap-10 border-t border-signal-ink/25 pt-10 text-[0.95rem] md:grid-cols-12">
           <p className="max-w-sm md:col-span-5">
-            Ahmed Gheith. Founder of LearnLoop, partner at Beyond Reason, leading
-            marketing at Core Livings, Mountain View. Cairo, Egypt.
+            Ahmed Gheith. Marketing and ecommerce consultant, partner at Beyond
+            Reason, leading marketing at Core Livings, Mountain View. Cairo, Egypt.
           </p>
           <nav aria-label="Pages" className="md:col-span-3">
             <ul className="space-y-2">

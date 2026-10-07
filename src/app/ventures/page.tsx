@@ -6,7 +6,7 @@ import WorkWithMe from "@/components/home/WorkWithMe";
 export const metadata: Metadata = {
   title: "Ventures",
   description:
-    "Ahmed Gheith's ventures: founder of LearnLoop, partner at Beyond Reason, and leading marketing at Core Livings, Mountain View.",
+    "Ahmed Gheith's ventures: marketing and ecommerce consultant, partner at Beyond Reason, and leading marketing at Core Livings, Mountain View.",
 };
 
 export default function VenturesPage() {
@@ -14,7 +14,7 @@ export default function VenturesPage() {
     <main>
       <PageIntro
         title="Three ventures. One long game."
-        intro="A platform I founded, a sportswear label I partner in, and the marketing I lead for a living brand inside Mountain View. Different games, the same playbook: clear positioning, real numbers, patient compounding."
+        intro="A consulting practice I run, a sportswear label I partner in, and the marketing I lead for a living brand inside Mountain View. Different games, the same playbook: clear positioning, real numbers, patient compounding."
         image="/images/shoot/laptop-look.jpg"
         imageAlt="Ahmed Gheith at work outdoors"
         imagePos="60% 40%"
